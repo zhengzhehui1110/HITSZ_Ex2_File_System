@@ -475,16 +475,35 @@
 <p>本实验为4学时。</p>
 <h2 id="_4">三、  实验内容</h2>
 <p>实现5个Unix实用程序：</p>
-<p>（1）在xv6上实现UNIX函数sleep，调用sleep会使程序暂停用户指定的时间。请将代码写在user/find.c文件中。运行效果应该如下：</p>
+<p>（1）在xv6上实现UNIX函数sleep，调用sleep会使程序暂停用户指定的时间。请将代码写在user/sleep.c文件中。运行效果应该如下：</p>
 <p><img alt="image-20201017230825652" src="../part1.assets/image-20201017230825652.png" /></p>
+<p>在xv6-riscv-fall19中，执行下面指令，测试程序</p>
+<p><img alt="image-20201018133334318" src="../part1.assets/image-20201018133334318.png" /></p>
 <p>（2）在xv6上实现pingpong函数，即两个进程在管道两侧来回通信。父进程通过将”ping”写入parent_fd [1]来发送子进程，而子进程则通过从parent_fd [0]读取来接收字节。子进程从父进程收到后，通过将“pong”写入child_fd [1]来回复，然后由父进程从child_fd[0]读取。请将代码写在user/pingpong.c文件中。运行效果应该如下：</p>
 <p><img alt="image-20201017230846238" src="../part1.assets/image-20201017230846238.png" /></p>
-<p>（3）在xv6上使用管道实现“质数筛选”, 输出2~35之间的而所有质数。请将代码写在user/prime.c文件中。运行效果应该如下：</p>
+<p>在xv6-riscv-fall19中，执行下面指令，测试程序</p>
+<p><img alt="image-20201018133548230" src="../part1.assets/image-20201018133548230.png" /></p>
+<p>（3）在xv6上使用管道实现“质数筛选”, 输出2~35之间的而所有质数。请将代码写在user/primes.c文件中。运行效果应该如下：</p>
 <p><img alt="image-20201017230855254" src="../part1.assets/image-20201017230855254.png" /></p>
+<p>在xv6-riscv-fall19中，执行下面指令，测试程序</p>
+<p><img alt="image-20201018133618542" src="../part1.assets/image-20201018133618542.png" /></p>
 <p>（4）在xv6上实现UNIX函数find，即在目录树中查找名称与字符串匹配的所有文件。请将代码写在user/find.c文件中。运行效果应该如下：</p>
 <p><img alt="image-20201017230901340" src="../part1.assets/image-20201017230901340.png" /></p>
+<p>在xv6-riscv-fall19中，执行下面指令，测试程序</p>
+<p><img alt="image-20201018133649747" src="../part1.assets/image-20201018133649747.png" /></p>
 <p>（5）在xv6上实现UNIX函数xargs，即从标准输入中读取行并为每行运行一个命令，且将该行作为命令的参数提供。请将代码写在user/xargs.c中。运行效果应该如下：</p>
 <p><img alt="image-20201017230906954" src="../part1.assets/image-20201017230906954.png" /></p>
+<div class="highlight"><pre><span></span><code>$ make qemu
+...
+$ <span class="nb">echo</span> <span class="m">3</span> <span class="m">4</span><span class="p">|</span>xargs <span class="nb">echo</span> <span class="m">1</span> <span class="m">2</span>
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span>
+$
+</code></pre></div>
+
+<p>在xv6-riscv-fall19中，执行下面指令，测试程序</p>
+<p><img alt="image-20201018133721430" src="../part1.assets/image-20201018133721430.png" /></p>
+<p>如果上述5个程序都能正常运行，可以用如下指令测试5个程序：</p>
+<p><img alt="image-20201018133836954" src="../part1.assets/image-20201018133836954.png" /></p>
                 
               
               
