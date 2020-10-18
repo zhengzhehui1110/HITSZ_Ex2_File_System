@@ -1,0 +1,1510 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+    
+    
+      
+        <title>Linux开发环境基础知识 - 操作系统（202秋季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c4007cdc.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href=".." title="操作系统（202秋季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="操作系统（202秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            操作系统（202秋季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Linux开发环境基础知识
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        实验须知
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../lab1/part1/" class="md-tabs__link">
+          Lab1：xv6与Unix实用程序
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="操作系统（202秋季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="操作系统（202秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    操作系统（202秋季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="实验须知" class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../env/" title="实验平台以及环境配置" class="md-nav__link">
+      实验平台以及环境配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Linux开发环境基础知识
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Linux开发环境基础知识" class="md-nav__link md-nav__link--active">
+      Linux开发环境基础知识
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 实验常用工具
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 实验常用工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ssh" class="md-nav__link">
+    1.1 SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ssh" class="md-nav__link">
+    1.2 SSH系列工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-sftp" class="md-nav__link">
+    1.3 文件传输SFTP服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-vscode" class="md-nav__link">
+    1.4 VScode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-vim" class="md-nav__link">
+    1.5 Vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-gcc" class="md-nav__link">
+    1.6 gcc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-makefile" class="md-nav__link">
+    1.7 Makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-git" class="md-nav__link">
+    1.8 git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-linux" class="md-nav__link">
+    2. Linux基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Linux基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ls" class="md-nav__link">
+    2.1 ls 显示内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 显示或设置网络状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 建立文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 删除文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 删除命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 切换目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    2.7 文本编辑模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-echo" class="md-nav__link">
+    2.8 echo 命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    2.9 打印文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    2.10 复制文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.11 改名或移动文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.12 查找文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.13 正则匹配文件内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.14 帮助命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215" class="md-nav__link">
+    2.15 可视化目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.16 比较差异
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    2.17 任务管理器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218" class="md-nav__link">
+    2.18 打包和解包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-linux" class="md-nav__link">
+    2.19 Linux常用快捷键
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux" class="md-nav__link">
+    3. Linux重定向和管道
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Linux重定向和管道">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 管道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../remote_env/" title="远程实验环境使用指南" class="md-nav__link">
+      远程实验环境使用指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lab1：xv6与Unix实用程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：xv6与Unix实用程序" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab1：xv6与Unix实用程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lab1/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lab1/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lab1/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lab1/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 实验常用工具
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 实验常用工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ssh" class="md-nav__link">
+    1.1 SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ssh" class="md-nav__link">
+    1.2 SSH系列工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-sftp" class="md-nav__link">
+    1.3 文件传输SFTP服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-vscode" class="md-nav__link">
+    1.4 VScode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-vim" class="md-nav__link">
+    1.5 Vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-gcc" class="md-nav__link">
+    1.6 gcc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-makefile" class="md-nav__link">
+    1.7 Makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-git" class="md-nav__link">
+    1.8 git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-linux" class="md-nav__link">
+    2. Linux基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Linux基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ls" class="md-nav__link">
+    2.1 ls 显示内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 显示或设置网络状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 建立文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 删除文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 删除命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 切换目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    2.7 文本编辑模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-echo" class="md-nav__link">
+    2.8 echo 命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    2.9 打印文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    2.10 复制文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.11 改名或移动文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.12 查找文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.13 正则匹配文件内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.14 帮助命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215" class="md-nav__link">
+    2.15 可视化目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.16 比较差异
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    2.17 任务管理器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218" class="md-nav__link">
+    2.18 打包和解包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-linux" class="md-nav__link">
+    2.19 Linux常用快捷键
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux" class="md-nav__link">
+    3. Linux重定向和管道
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Linux重定向和管道">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 管道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="linux">Linux开发环境基础知识</h1>
+<h2 id="1">1. 实验常用工具</h2>
+<h3 id="11-ssh">1.1 SSH</h3>
+<p>ssh 可以帮助我们调用远程服务器的命令行工具。</p>
+<p>在 Linux 系统上 SSH 是非常常用的工具，通过 SSH Client 我们可以连接到运行了 SSH Server 的远程机器上。SSH Client 的基本使用方法是：</p>
+<div class="highlight"><pre><span></span><code>ssh user@remote -p port
+</code></pre></div>
+
+<ul>
+<li>user 是你在远程机器上的用户名，如果不指定的话默认为当前用户</li>
+<li>remote 是远程机器的地址，可以是 IP，域名，或者是后面会提到的别名</li>
+<li>port 是 SSH Server 监听的端口，如果不指定的话就为默认值 22</li>
+</ul>
+<p>PS：</p>
+<ul>
+<li>如果是使用ssh和虚拟机相连，需要配置虚拟机的端口转发。</li>
+<li>如果想ssh使用root权限，需要特殊配置。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>vi /etc/ssh/sshd_config
+</code></pre></div>
+
+<p>增加：PermitRootLogin yes</p>
+<p>重启服务</p>
+<div class="highlight"><pre><span></span><code>service sshd restart
+</code></pre></div>
+
+<h3 id="12-ssh">1.2 SSH系列工具</h3>
+<p>常用的SSH工具有Putty、XShell、SecureCRT、MobaXterm等。在实验中，我们推荐同学们使用MobaXterm。</p>
+<p>MobaXterm 是一款远程控制工具，支持创建SSH、Telnet、Rsh、Xdmc、RDP、VNC、FTP、 SFTP、串口(Serial COM)、本地Shell、Mosh、Aws、WSL(微软子系统)等超多连接功能。MobaXterm 提供了人性化的操作界面，支持与主流的操作系统连接进行控制和管理操作，功能十分强大。</p>
+<p>MobaXterm 下载链接：<a href="http://10.249.12.209">http://10.249.12.209</a></p>
+<p>打开MobaXterm，单击打开工具Session（位于左上角）选择New sessions打开新建窗口，选择SSH，输入开发板IP地址、登陆用户名及端口（默认22），点击OK。</p>
+<p><img alt="0-12" src="../Linux.assets/0-12.png" /></p>
+<p>SSH配置信息如下：</p>
+<p><img alt="image-20201017220316972" src="../Linux.assets/image-20201017220316972.png" /></p>
+<h3 id="13-sftp">1.3 文件传输SFTP服务</h3>
+<p>SSH远程登录完毕，在左下角没有一个竖着的Sftp，双击它，就出现了开发板的文件目录，当前路径是</p>
+<p><img alt="image-20201017220715573" src="../Linux.assets/image-20201017220715573.png" /></p>
+<p>接下来在可以点击红色框框的按钮“Upload to current folder”或者“Download selected files”，在windows系统和虚拟机/远程实验平台之间上传或下载文件。</p>
+<h3 id="14-vscode">1.4 VScode</h3>
+<p>Visual Studio Code 是一款功能强大的代码编辑器,适用于几乎任何语言并可在任何操作系统上运行。</p>
+<p>通过VSCode的强大扩展库，我们可以在VSCode上一站式创建，编辑，构建，运行和调试远程主机上的工程文件，就像使用Code::Blocks操作本地工程一样。</p>
+<p>强烈推荐同学们使用VSCode进行实验，而不是在物理机上编辑代码再拷贝过去手动运行（或者在虚拟机记事本中编写代码），这将节省大量的时间。</p>
+<p>在https://code.visualstudio.com/下载并在物理机上安装VSCode软件。</p>
+<p>打开后在左侧边栏的扩展商店中搜索并安装以下扩展</p>
+<blockquote>
+<ol>
+<li>Chinese (Simplified) Language Pack for Visual Studio Code</li>
+<li>Remote-SSH</li>
+<li>C/C++
+</li>
+</ol>
+</blockquote>
+<p>安装完成后重启VSCode，在左侧边栏的远程资源管理器工具栏中点击+号，在顶部输入ssh root@1.2.3.4（改为虚拟机ip地址） 命令并一路回车。</p>
+<p>此时在工具栏中可以看到新添加的远程主机。在远程电脑上点击连接，输入密码后将会打开新窗口连接到远程主机中。</p>
+<p>在连接到远程主机之后，需要在再次搜索并安装上述扩展，将其安装在远程主机上。C/C++扩展在安装后可能需要一段时间来下载依赖文件。</p>
+<p>VScode的详细用法查看“使用VSCode阅读源代码教程”（见QQ群）。</p>
+<h3 id="15-vim">1.5 Vim</h3>
+<ul>
+<li>安装vim</li>
+</ul>
+<p>终端内输入</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install vim
+</code></pre></div>
+
+<ul>
+<li>在终端的使用</li>
+</ul>
+<div class="highlight"><pre><span></span><code>vim fileName  
+</code></pre></div>
+
+<ul>
+<li>软件使用</li>
+</ul>
+<p>刚进入时，获得这样的界面，会发现不能进行正常的输入。</p>
+<p><img alt="image-20201014205453969" src="../Linux.assets/image-20201014205453969.png" /></p>
+<p>最简单的进入编辑模式的方法是 i 键。</p>
+<p><img alt="image-20201014205541205-1602944380498" src="../Linux.assets/image-20201014205541205-1602944380498.png" /></p>
+<p>可以发现此处左下角有-- INSERT -- 标识，代表此时可以进行正常的编辑工作。</p>
+<p>待编辑工作完成后，按一次esc键，退出编辑模式。</p>
+<p><img alt="image-20201014205735182" src="../Linux.assets/image-20201014205735182.png" /></p>
+<p>输入  :wq 而后回车 进行保存并退出操作。</p>
+<p><img alt="image-20201014205822775" src="../Linux.assets/image-20201014205822775.png" /></p>
+<p>这样就基本可以完成vim编辑器下的编辑操作，但vim多样化的快捷键以及支持各种自定义的能力才是使vim成为最受欢迎编辑器，且经久不衰的原因，希望大家可以有兴趣有动力，自己去多多了解。</p>
+<h3 id="16-gcc">1.6 gcc</h3>
+<p>gcc 是 gnu 的 c 编译器 gcc 在执行编译工作的时候，总共需要4步：</p>
+<ul>
+<li>编译预处理，也称预编译，可以使用命令<code>gcc -E</code>执行</li>
+<li>编译，可以使用<code>gcc -S</code>执行</li>
+<li>汇编，可以使用<code>as</code> 或者<code>gcc -c</code>执行</li>
+<li>链接，可以使用<code>gcc xxx.o xxx.so xxx.a</code>执行</li>
+</ul>
+<p>编译预处理阶段：主要对包含的头文件（＃include ）和宏定义（＃define,#ifdef … ）还有注释等进行处理。
+编译阶段：C语法错误的检查，就是在这个阶段进行。在检查无误后，gcc把代码翻译成汇编语言。
+汇编阶段：生成目标代码 *.o
+链接阶段：生成可执行文件</p>
+<p>参数: </p>
+<p><strong>-o</strong> 指定输出的可执行文件</p>
+<div class="highlight"><pre><span></span><code>gcc -o hello hello.c 
+</code></pre></div>
+
+<p>常用</p>
+<div class="highlight"><pre><span></span><code>gcc a.c
+gcc a.c -o a
+预处理 gcc -E -o a.i a.c
+编译 gcc -S -o a.s a.c <span class="o">(</span>cc/cl<span class="o">)</span>
+汇编 gcc -c -o a.o a.c <span class="o">(</span>as<span class="o">)</span>
+链接 gcc a.o b.o c.o <span class="o">(</span>ld<span class="o">)</span>
+-I. -lpthread  -g<span class="o">(</span>-O1, -O2, -O3<span class="o">)</span> -Ldir -static -share -Wall
+</code></pre></div>
+
+<p>反汇编： <code>objdump</code>, <code>readelf</code></p>
+<h3 id="17-makefile">1.7 Makefile</h3>
+<p>什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但是，作为一个专业的程序员，特别是在Unix环境下开发的程序员，会不会写Makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。因为，Makefile关系到了整个工程的编译规则。Makefile带来的好处——自动化编译，一旦写好，只需要一个make命令，整个工程完全自动编译，极大地提高了软件开发的效率。make是一个命令工具，用于解释makefile中指令的命令工具。</p>
+<p>编写规则：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">&lt;target&gt; </span><span class="o">:</span> &lt;<span class="n">prerequisites</span>&gt; 
+<span class="err">[tab]</span>  <span class="err">&lt;commands&gt;</span>
+</code></pre></div>
+
+<p>为了大家能更为清晰地了解Makefile的基本概念，我们来写一个简单的Makefile。</p>
+<p>直接使用gcc编译hello.c</p>
+<div class="highlight"><pre><span></span><code>$ gcc -o hello hello.c
+</code></pre></div>
+
+<p>那么，简易的Makefile可以写成如下的样子，之后执行make即可产生hello可执行文件</p>
+<div class="highlight"><pre><span></span><code><span class="nf">all</span><span class="o">:</span> <span class="n">hello</span>.<span class="n">c</span>
+    gcc -o hello hello.c
+</code></pre></div>
+
+<p>建议同学们自己尝试写一个简单的Makefile文件，这里为同学们提供两个网址供大家学习参考：</p>
+<h3 id="18-git">1.8 git</h3>
+<p>先来一张图说明git的工作过程</p>
+<p><a href="http://ixiaosi.art/2019/01/10/git/git%E4%BB%8B%E7%BB%8D/">http://ixiaosi.art/2019/01/10/git/git%E4%BB%8B%E7%BB%8D/</a></p>
+<p><code>git</code>的常用命令：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 下载一个项目和它的整个代码历史</span>
+$ git clone <span class="o">[</span>url<span class="o">]</span>
+
+<span class="c1"># 显示当前的Git配置</span>
+$ git config --list
+
+<span class="c1"># 编辑Git配置文件</span>
+$ git config -e <span class="o">[</span>--global<span class="o">]</span>
+
+<span class="c1"># 设置提交代码时的用户信息</span>
+$ git config <span class="o">[</span>--global<span class="o">]</span> user.name <span class="s2">&quot;[name]&quot;</span>
+$ git config <span class="o">[</span>--global<span class="o">]</span> user.email <span class="s2">&quot;[email address]&quot;</span>
+
+<span class="c1"># 添加指定文件到暂存区</span>
+$ git add <span class="o">[</span>file1<span class="o">]</span> <span class="o">[</span>file2<span class="o">]</span> ...
+
+<span class="c1"># 删除工作区文件，并且将这次删除放入暂存区</span>
+$ git rm <span class="o">[</span>file1<span class="o">]</span> <span class="o">[</span>file2<span class="o">]</span> ...
+
+<span class="c1"># 提交暂存区到仓库区</span>
+$ git commit -m <span class="o">[</span>message<span class="o">]</span>
+
+<span class="c1"># 列出所有本地分支</span>
+$ git branch
+
+<span class="c1"># 列出所有远程分支</span>
+$ git branch -r
+
+<span class="c1"># 列出所有本地分支和远程分支</span>
+$ git branch -a
+
+<span class="c1"># 切换到指定分支，并更新工作区</span>
+$ git checkout <span class="o">[</span>branch-name<span class="o">]</span>
+
+<span class="c1"># 显示有变更的文件</span>
+$ git status
+
+<span class="c1"># 显示当前分支的版本历史</span>
+$ git log
+
+<span class="c1"># 显示commit历史，以及每次commit发生变更的文件</span>
+$ git log --stat 
+
+<span class="c1"># 显示暂存区和工作区的差异</span>
+$ git diff
+</code></pre></div>
+
+<h2 id="2-linux">2. Linux基本操作</h2>
+<p>学习建议：鸟哥的Linux私房菜（基础学习篇）</p>
+<h3 id="21-ls">2.1 ls 显示内容</h3>
+<p>Linux ls（英文全拼：list files）命令用于显示指定工作目录下之内容（列出目前工作目录所含之文件及子目录)。</p>
+<div class="highlight"><pre><span></span><code> ls <span class="o">[</span>-alrtAFR<span class="o">]</span> <span class="o">[</span>name...<span class="o">]</span>
+</code></pre></div>
+
+<ul>
+<li>-a 显示所有文件及目录 (<strong>.</strong> 开头的文件不会列出)</li>
+<li>-l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</li>
+<li>-r 将文件以相反次序显示(原定依英文字母次序)</li>
+<li>-t 将文件依建立时间之先后次序列出</li>
+<li>-A 同 -a ，但不列出 "." (目前目录) 及 ".." (父目录)</li>
+<li>-F 在列出的文件名称后加一符号；例如可执行档则加 "*", 目录则加 "/"</li>
+<li>-R 若目录下有文件，则以下之文件亦皆依序列出</li>
+</ul>
+<h3 id="22">2.2 显示或设置网络状态</h3>
+<p>Linux ifconfig命令用于显示或设置网络设备。</p>
+<p>ifconfig可设置网络设备的状态，或是显示目前的设置。</p>
+<div class="highlight"><pre><span></span><code>ifconfig <span class="o">[</span>网络设备<span class="o">][</span>down up -allmulti -arp -promisc<span class="o">][</span>add&lt;地址&gt;<span class="o">][</span>del&lt;地址&gt;<span class="o">][</span>&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;<span class="o">][</span>io_addr&lt;I/O地址&gt;<span class="o">][</span>irq&lt;IRQ地址&gt;<span class="o">][</span>media&lt;网络媒介类型&gt;<span class="o">][</span>mem_start&lt;内存地址&gt;<span class="o">][</span>metric&lt;数目&gt;<span class="o">][</span>mtu&lt;字节&gt;<span class="o">][</span>netmask&lt;子网掩码&gt;<span class="o">][</span>tunnel&lt;地址&gt;<span class="o">][</span>-broadcast&lt;地址&gt;<span class="o">][</span>-pointopoint&lt;地址&gt;<span class="o">][</span>IP地址<span class="o">]</span>
+</code></pre></div>
+
+<p>也可以使用 ip addr命令查看IP地址</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ip addr</span>
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">00</span>:0c:29:61:40:aa brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">192</span>.168.163.134/24 brd <span class="m">192</span>.168.163.255 scope global dynamic noprefixroute ens33
+       valid_lft 1729sec preferred_lft 1729sec
+    inet6 fe80::3b1e:b490:7d7f:ebd0/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+</code></pre></div>
+
+<p>上述命令结果显示两部分，lo和ens33，如果有多块网卡，每块网卡都会显示一部分。</p>
+<ol>
+<li>lo：全称loopback，是回环地址，经常被分配到127.0.0.1地址上，用于本机通信，经过内核处理后直接返回，不会在任何网络中出现。</li>
+<li>ens33：网卡名，如果有多块网卡，会有多个ens 或其它名称。上述IP地址是192.168.163.134/24</li>
+</ol>
+<h3 id="23">2.3 建立文件夹</h3>
+<p>Linux mkdir（英文全拼：make directory）命令用于创建目录。</p>
+<div class="highlight"><pre><span></span><code>mkdir [-p] dirName
+</code></pre></div>
+
+<ul>
+<li>-p 确保目录名称存在，不存在的就建一个。</li>
+</ul>
+<h3 id="24">2.4 删除文件夹</h3>
+<p>Linux rmdir（英文全拼：remove directory）命令删除空的目录。</p>
+<div class="highlight"><pre><span></span><code>rmdir [-p] dirName
+</code></pre></div>
+
+<ul>
+<li>-p 是当子目录被删除后使它也成为空目录的话，则顺便一并删除。</li>
+</ul>
+<h3 id="25">2.5 删除命令</h3>
+<p>Linux rm（英文全拼：remove）命令用于删除一个文件或者目录。</p>
+<div class="highlight"><pre><span></span><code>rm [options] name...
+</code></pre></div>
+
+<ul>
+<li>-i 删除前逐一询问确认。</li>
+<li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</li>
+<li>-r 将目录及以下之档案亦逐一删除。</li>
+</ul>
+<h3 id="26">2.6 切换目录</h3>
+<p>Linux cd（英文全拼：change directory）命令用于切换当前工作目录。</p>
+<p>其中 dirName 表示法可为绝对路径或相对路径。若目录名称省略，则变换至使用者的 home 目录 (也就是刚 login 时所在的目录)。</p>
+<p>另外，<strong>~</strong> 也表示为 home 目录 的意思， <strong>.</strong> 则是表示目前所在的目录， <strong>..</strong> 则表示目前目录位置的上一层目录。</p>
+<div class="highlight"><pre><span></span><code>cd [dirName]
+</code></pre></div>
+
+<ul>
+<li>dirName：要切换的目标目录。</li>
+</ul>
+<h3 id="27">2.7 文本编辑模式</h3>
+<div class="highlight"><pre><span></span><code>vi/vim/bash
+</code></pre></div>
+
+<h3 id="28-echo">2.8 echo 命令</h3>
+<ul>
+<li>显示普通字符串:  </li>
+</ul>
+<div class="highlight"><pre><span></span><code> <span class="nb">echo</span> <span class="s2">&quot;It is a test&quot;</span>  
+</code></pre></div>
+
+<p>输出  It is a test</p>
+<ul>
+<li>显示转义字符  </li>
+</ul>
+<div class="highlight"><pre><span></span><code> <span class="nb">echo</span> <span class="s2">&quot;\&quot;It is a test\&quot;&quot;</span>
+</code></pre></div>
+
+<p>输出  "It is a test"</p>
+<ul>
+<li>显示结果定向至文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;It is a test&quot;</span> &gt; myfile
+</code></pre></div>
+
+<ul>
+<li>显示变量 </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<span class="nb">read</span> name 
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$name</span><span class="s2"> It is a test&quot;</span>
+</code></pre></div>
+
+<h3 id="29">2.9 打印文件</h3>
+<p>cat（英文全拼：concatenate）命令用于连接文件并打印到标准输出设备上。</p>
+<div class="highlight"><pre><span></span><code>cat <span class="o">[</span>-AbeEnstTuv<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> fileName
+</code></pre></div>
+
+<p><strong>-n 或 --number</strong>：由 1 开始对所有输出的行数编号。</p>
+<p><strong>-b 或 --number-nonblank</strong>：和 -n 相似，只不过对于空白行不编号。</p>
+<p><strong>-s 或 --squeeze-blank</strong>：当遇到有连续两行以上的空白行，就代换为一行的空白行。</p>
+<p><strong>-v 或 --show-nonprinting</strong>：使用 ^ 和 M- 符号，除了 LFD 和 TAB 之外。</p>
+<p><strong>-E 或 --show-ends</strong> : 在每行结束处显示 $。</p>
+<p><strong>-T 或 --show-tabs</strong>: 将 TAB 字符显示为 ^I。</p>
+<p><strong>-A, --show-all</strong>：等价于 -vET。</p>
+<p>**-e：**等价于"-vE"选项；</p>
+<p>**-t：**等价于"-vT"选项；</p>
+<h3 id="210">2.10 复制文件</h3>
+<p>Linux cp（英文全拼：copy file）命令主要用于复制文件或目录。</p>
+<div class="highlight"><pre><span></span><code>cp <span class="o">[</span>options<span class="o">]</span> <span class="nb">source</span> dest
+或
+cp <span class="o">[</span>options<span class="o">]</span> source... directory
+</code></pre></div>
+
+<ul>
+<li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</li>
+<li>-d：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</li>
+<li>-f：覆盖已经存在的目标文件而不给出提示。</li>
+<li>-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答"y"时目标文件将被覆盖。</li>
+<li>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</li>
+<li>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</li>
+<li>-l：不复制文件，只是生成链接文件。</li>
+</ul>
+<h3 id="211">2.11 改名或移动文件</h3>
+<p>Linux mv（英文全拼：move file）命令用来为文件或目录改名、或将文件或目录移入其它位置。</p>
+<div class="highlight"><pre><span></span><code>mv <span class="o">[</span>options<span class="o">]</span> <span class="nb">source</span> dest
+mv <span class="o">[</span>options<span class="o">]</span> source... directory
+</code></pre></div>
+
+<ul>
+<li><strong>-b</strong>: 当目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。</li>
+<li><strong>-i</strong>: 如果指定移动的源目录或文件与目标的目录或文件同名，则会先询问是否覆盖旧文件，输入 y 表示直接覆盖，输入 n 表示取消该操作。</li>
+<li><strong>-f</strong>: 如果指定移动的源目录或文件与目标的目录或文件同名，不会询问，直接覆盖旧文件。</li>
+<li><strong>-n</strong>: 不要覆盖任何已存在的文件或目录。</li>
+<li><strong>-u</strong>：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</li>
+</ul>
+<h3 id="212">2.12 查找文件</h3>
+<p>Linux find 命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则 find 命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<div class="highlight"><pre><span></span><code>find path -option <span class="o">[</span> -print <span class="o">]</span> <span class="o">[</span> -exec -ok <span class="nb">command</span> <span class="o">]</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div>
+
+<p>示例:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># find . -name &quot;*.c&quot;</span>
+</code></pre></div>
+
+<p>Linux locate命令用于查找符合条件的文档，他会去保存文档和目录名称的数据库内，查找合乎范本样式条件的文档或目录。</p>
+<p>一般情况我们只需要输入 <strong>locate your_file_name</strong> 即可查找指定文件。</p>
+<div class="highlight"><pre><span></span><code>locate <span class="o">[</span>-d <span class="o">][</span>--help<span class="o">][</span>--version<span class="o">][</span>范本样式...<span class="o">]</span>
+</code></pre></div>
+
+<p>示例:</p>
+<p>查找 passwd 文件，输入以下命令：</p>
+<div class="highlight"><pre><span></span><code>locate passwd
+</code></pre></div>
+
+<p><strong>PS:</strong> <em>locate 与 find 不同: find 是去硬盘找，locate 只在 /var/lib/slocate 资料库中找。</em></p>
+<p>locate 的速度比 find 快，它并不是真的查找，而是查数据库，一般文件数据库在 /var/lib/slocate/slocate.db 中，所以 locate 的查找并不是实时的，而是以数据库的更新为准，一般是系统自己维护，也可以手工升级数据库 ，命令为：</p>
+<div class="highlight"><pre><span></span><code>updatedb
+</code></pre></div>
+
+<h3 id="213">2.13 正则匹配文件内容</h3>
+<p>Linux grep 命令用于查找文件里符合条件的字符串。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 <strong>-</strong>，则 grep 指令会从标准输入设备读取数据。</p>
+<div class="highlight"><pre><span></span><code>grep <span class="o">[</span>-abcEFGhHilLnqrsvVwxy<span class="o">][</span>-A&lt;显示列数&gt;<span class="o">][</span>-B&lt;显示列数&gt;<span class="o">][</span>-C&lt;显示列数&gt;<span class="o">][</span>-d&lt;进行动作&gt;<span class="o">][</span>-e&lt;范本样式&gt;<span class="o">][</span>-f&lt;范本文件&gt;<span class="o">][</span>--help<span class="o">][</span>范本样式<span class="o">][</span>文件或目录...<span class="o">]</span>
+</code></pre></div>
+
+<p>示例:</p>
+<div class="highlight"><pre><span></span><code>grep <span class="nb">test</span> *file 
+</code></pre></div>
+
+<p>结果如下:</p>
+<div class="highlight"><pre><span></span><code>$ grep <span class="nb">test</span> test* <span class="c1">#查找前缀有“test”的文件包含“test”字符串的文件  </span>
+testfile1:This a Linux testfile! <span class="c1">#列出testfile1 文件中包含test字符的行  </span>
+testfile_2:This is a linux testfile! <span class="c1">#列出testfile_2 文件中包含test字符的行  </span>
+testfile_2:Linux <span class="nb">test</span> <span class="c1">#列出testfile_2 文件中包含test字符的行 </span>
+</code></pre></div>
+
+<h3 id="214">2.14 帮助命令</h3>
+<p><strong>man命令</strong> 是Linux下的帮助指令，通过man指令可以查看Linux中的指令帮助、配置文件帮助和编程帮助等信息。</p>
+<div class="highlight"><pre><span></span><code>man <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>args<span class="o">]</span>
+</code></pre></div>
+
+<ul>
+<li>-a：在所有的man帮助手册中搜索；</li>
+<li>-f：等价于whatis指令，显示给定关键字的简短描述信息；</li>
+<li>-P：指定内容时使用分页程序；</li>
+<li>-M：指定man手册搜索的路径。</li>
+</ul>
+<h3 id="215">2.15 可视化目录</h3>
+<p>Linux tree命令用于以树状图列出目录的内容。</p>
+<p>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+<div class="highlight"><pre><span></span><code>tree <span class="o">[</span>-aACdDfFgilnNpqstux<span class="o">][</span>-I &lt;范本样式&gt;<span class="o">][</span>-P &lt;范本样式&gt;<span class="o">][</span>目录...<span class="o">]</span>
+</code></pre></div>
+
+<h3 id="216">2.16 比较差异</h3>
+<p>Linux diff命令用于比较文件的差异。</p>
+<p>diff以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则diff会比较目录中相同文件名的文件，但不会比较其中子目录。</p>
+<div class="highlight"><pre><span></span><code>diff [-abBcdefHilnNpPqrstTuvwy][-&lt;行数&gt;][-C &lt;行数&gt;][-D &lt;巨集名称&gt;][-I &lt;字符或字符串&gt;][-S &lt;文件&gt;][-W &lt;宽度&gt;][-x &lt;文件或目录&gt;][-X &lt;文件&gt;][--help][--left-column][--suppress-common-line][文件或目录1][文件或目录2]
+</code></pre></div>
+
+<h3 id="217">2.17 任务管理器</h3>
+<p>Linux ps （英文全拼：process status）命令用于显示当前进程的状态.</p>
+<div class="highlight"><pre><span></span><code>ps <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
+</code></pre></div>
+
+<ul>
+<li>-A 列出所有的行程</li>
+<li>-w 显示加宽可以显示较多的资讯</li>
+<li>-au 显示较详细的资讯</li>
+<li>-aux 显示所有包含其他使用者的行程</li>
+</ul>
+<p>Linux top命令用于实时显示 process 的动态。</p>
+<div class="highlight"><pre><span></span><code>top <span class="o">[</span>-<span class="o">]</span> <span class="o">[</span>d delay<span class="o">]</span> <span class="o">[</span>q<span class="o">]</span> <span class="o">[</span>c<span class="o">]</span> <span class="o">[</span>S<span class="o">]</span> <span class="o">[</span>s<span class="o">]</span> <span class="o">[</span>i<span class="o">]</span> <span class="o">[</span>n<span class="o">]</span> <span class="o">[</span>b<span class="o">]</span>
+</code></pre></div>
+
+<p><img alt="image-20201013231048250" src="../Linux.assets/image-20201013231048250-1602986429233.png" /></p>
+<h3 id="218">2.18 打包和解包</h3>
+<p>Linux tar（英文全拼：tape archive ）命令用于备份文件。</p>
+<p>tar 是用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。</p>
+<p>首先要弄清两个概念：打包和压缩。打包是指将一大堆文件或目录变成一个总的文件；压缩则是将一个大的文件通过一些压缩算法变成一个小文件。</p>
+<p>为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）。</p>
+<p>linux下最常用的打包程序就是tar了，使用tar程序打出来的包我们常称为tar包，tar包文件的命令通常都是以.tar结尾的。生成tar包后，就可以用其它的程序来进行压缩。</p>
+<p>打包命令示例:</p>
+<div class="highlight"><pre><span></span><code>tar -cvf log.tar log2012.log
+
+tar -zcvf log.tar.gz log2012.log
+
+tar -jcvf log.tar.bz2 log2012.log
+
+zip FileName.zip DirName
+</code></pre></div>
+
+<p>tar -cvf log.tar log2012.log  仅打包，不压缩.</p>
+<p>tar -zcvf log.tar.gz log2012.log  打包后，以 gzip 压缩 </p>
+<p>tar -zcvf log.tar.bz2 log2012.log 打包后，以 bzip2 压缩 </p>
+<p>解包示例:</p>
+<div class="highlight"><pre><span></span><code>tar -zxvf file.tar.gz //解压tar.gz
+
+tar -jxvf file.tar.bz2 //解压 tar.bz2
+
+unzip file.zip //解压zip
+</code></pre></div>
+
+<h3 id="219-linux">2.19 Linux常用快捷键</h3>
+<p>Ctrl+C 终止当前程序的执行
+Ctrl+Z 挂起当前程序
+Ctrl+D 终止输入（若正在使用 Shell，则退出当前 Shell）
+Ctrl+I 清屏</p>
+<h2 id="3-linux">3. Linux重定向和管道</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">command</span> &lt; input.txt <span class="m">1</span>&gt; output.txt <span class="m">2</span>&gt;err.txt  
+command1 <span class="p">|</span> command2 <span class="p">|</span> command3 <span class="p">|</span> ...  
+</code></pre></div>
+
+<h3 id="31">3.1 重定向</h3>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">command &gt; file</td>
+<td align="left">将输出重定向到 file。</td>
+</tr>
+<tr>
+<td align="left">command &lt; file</td>
+<td align="left">将输入重定向到 file。</td>
+</tr>
+<tr>
+<td align="left">command &gt;&gt; file</td>
+<td align="left">将输出以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td align="left">n &gt; file</td>
+<td align="left">将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td align="left">n &gt;&gt; file</td>
+<td align="left">将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td align="left">n &gt;&amp; m</td>
+<td align="left">将输出文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td align="left">n &lt;&amp; m</td>
+<td align="left">将输入文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td align="left">&lt;&lt; tag</td>
+<td align="left">将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+</tbody>
+</table>
+<p>一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：</p>
+<ul>
+<li>标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</li>
+<li>标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</li>
+<li>标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</li>
+</ul>
+<p>默认情况下，command &gt; file 将 stdout 重定向到 file，command &lt; file 将stdin 重定向到 file。</p>
+<p>如果希望 stderr 重定向到 file，可以这样写：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">command</span> <span class="m">2</span> &gt; file
+</code></pre></div>
+
+<p>如果希望 stderr 追加到 file 文件末尾，可以这样写：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">command</span> <span class="m">2</span> &gt;&gt; file
+</code></pre></div>
+
+<h3 id="32">3.2 管道</h3>
+<p>若想统计 /etc目录下文件的详细信息，正常的使用需要两个步骤。</p>
+<p><img alt="image-20201014230336988" src="../Linux.assets/image-20201014230336988.png" /></p>
+<p>显然，etc.txt 作为中间buffer，没有二次使用的需要，为省略这种麻烦，同时提高代码效率，我们需要使用管道这个功能。</p>
+<p><img alt="image-20201014230644371" src="../Linux.assets/image-20201014230644371.png" /></p>
+<p>对比以上两种方法，我们也可以理解为，管道本质上就是一个文件，前面的进程以写方式打开文件，后面的进程以读方式打开。这样前面写完后面读，于是就实现了通信。实际上管道的设计也是遵循UNIX的“一切皆文件”设计原则的，它本质上就是一个文件。Linux系统直接把管道实现成了一种文件系统，借助VFS给应用程序提供操作接口。</p>
+<p>虽然实现形态上是文件，但是管道本身并不占用磁盘或者其他外部存储的空间。在Linux的实现上，它占用的是内存空间。所以，Linux上的管道就是一个操作方式为文件的内存缓冲区。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../env/" title="实验平台以及环境配置" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验平台以及环境配置
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../remote_env/" title="远程实验环境使用指南" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                远程实验环境使用指南
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
