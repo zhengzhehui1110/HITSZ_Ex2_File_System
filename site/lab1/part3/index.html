@@ -360,10 +360,10 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1部署实验环境
+    1. 部署实验环境
   </a>
   
-    <nav class="md-nav" aria-label="1部署实验环境">
+    <nav class="md-nav" aria-label="1. 部署实验环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -394,10 +394,10 @@
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2 编写用户程序
+    2.  编写用户程序
   </a>
   
-    <nav class="md-nav" aria-label="2 编写用户程序">
+    <nav class="md-nav" aria-label="2.  编写用户程序">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -470,10 +470,10 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1部署实验环境
+    1. 部署实验环境
   </a>
   
-    <nav class="md-nav" aria-label="1部署实验环境">
+    <nav class="md-nav" aria-label="1. 部署实验环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -504,10 +504,10 @@
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2 编写用户程序
+    2.  编写用户程序
   </a>
   
-    <nav class="md-nav" aria-label="2 编写用户程序">
+    <nav class="md-nav" aria-label="2.  编写用户程序">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -546,7 +546,7 @@
                 
                 
                 <h1 id="_1">实验步骤</h1>
-<h3 id="1">1部署实验环境</h3>
+<h3 id="1">1. 部署实验环境</h3>
 <p>实验环境主要分为三部分：xv6运行环境、xv6源码、xv6的编译与运行。</p>
 <h4 id="11-xv6">1.1  xv6运行环境</h4>
 <p>xv6运行环境详见“实验平台及环境配置”。</p>
@@ -555,7 +555,7 @@
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/HITSZ-SYSTEMS/xv6-riscv-fall19.git
 </code></pre></div>
 
-<p>每个实验项目都在不同的分支上完成，请**注意切换分支**，例如，实验一需切换到util分支后进行开发。</p>
+<p>每个实验项目都在不同的分支上完成，请 <strong>注意切换分支</strong> ，例如，实验一需切换到util分支后进行开发。</p>
 <p><img alt="image-20201018104217445" src="../part3.assets/image-20201018104217445.png" /></p>
 <p>xv6的代码结构：</p>
 <p><img alt="image-20201017231446472" src="../part3.assets/image-20201017231446472.png" /></p>
@@ -566,7 +566,7 @@
 <blockquote>
 <p>qemu退出方法：ctrl+a, 再按x</p>
 </blockquote>
-<h3 id="2">2 编写用户程序</h3>
+<h3 id="2">2.  编写用户程序</h3>
 <h4 id="21">2.1  示例</h4>
 <p>以sleep实用程序为例演示在xv6系统上编写用户程序的流程：</p>
 <p>Step1. 新建user/sleep.c文件，并编写代码；</p>
@@ -578,7 +578,7 @@
 <p><strong>1)</strong>   <strong>sleep</strong> </p>
 <p>a)    请注意判断命令输入的内容，给出友好的错误提示；</p>
 <p>b)    调用sleep();</p>
-<p>c)    调用exit()确保main函数的推出。</p>
+<p>c)    调用exit()确保main函数的退出。</p>
 <p><strong>2)</strong>   <strong>pingpong</strong></p>
 <p>a)    使用pipe()创建管道：</p>
 <p>例如：</p>
@@ -590,7 +590,7 @@
 
 <p>b)    使用fork()创建子进程，注意根据返回值，判断父子进程；</p>
 <p>c)    利用read(), write()函数对管道进行读写。</p>
-<p><strong>3)</strong>   <strong>prime</strong></p>
+<p><strong>3)</strong>   <strong>primes</strong></p>
 <p>a)    根据需求利用fork()创建子进程;</p>
 <p>b)    利用多个pipe()创建的管道在父子进程间进行数据的传输；</p>
 <p>c)    dup()可以用来复制文件句柄（管道的写入、读出端）：</p>

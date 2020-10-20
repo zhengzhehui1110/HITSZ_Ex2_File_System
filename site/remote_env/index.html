@@ -455,15 +455,19 @@
 <p>Step3: 输入<code>passwd</code>命令修改自己的默认密码</p>
 <p><img alt="image-20201016161939563" src="../remote_env.assets/image-20201016161939563.png" /></p>
 <p>Step4: 使用<code>git</code>命令拉取实验仓库，并编译，验证其正常运行。若不能正常运行，请及时反馈。</p>
-<div class="highlight"><pre><span></span><code>git clone /home/public/xv6-riscv-fall19
+<div class="highlight"><pre><span></span><code>git clone https://github.com/HITSZ-SYSTEMS/xv6-riscv-fall19.git
 make qemu
 </code></pre></div>
 
-<p>Step5: 请牢记退出QEMU的命令：先按<code>Ctrl+A</code>，松开后，单独按下<code>X</code></p>
-<p>Step6:  输入<code>exit</code>退出远程会话
-Step7:  你的进度将在远程服务器保留，但为安全起见，请自己使用<code>git</code>结合私有Github仓库进行版本管理和备份。</p>
+<p>Step5: 请牢记退出QEMU的命令：先按<code>Ctrl+a开后，单独按下</code>x`</p>
+<p>Step6:  输入<code>exit</code>退出远程会话</p>
+<p>Step7:  你的进度将在远程服务器保留，但为安全起见，请自己使用<code>git</code>结合私有Github仓库进行版本管理和备份。</p>
 <h3 id="1vscode">附录1：使用VSCode登录远程环境</h3>
 <p>在确认上述步骤可以正常执行后，推荐使用VSCode登录，步骤如下：</p>
+<div class="admonition 提示">
+<p class="admonition-title">提示</p>
+<p>使用前，需要安装Remote-SSH插件。</p>
+</div>
 <p><img alt="image-20201016162754878" src="../remote_env.assets/image-20201016162754878.png" /></p>
 <p>回车，提示Host Added!</p>
 <p>在此处点击连接：</p>

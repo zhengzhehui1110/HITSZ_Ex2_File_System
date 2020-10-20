@@ -344,9 +344,42 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        提交文档
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="提交文档" class="md-nav__link md-nav__link--active">
       提交文档
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#githubgitee" class="md-nav__link">
+    如何提交到自己的Github/Gitee？
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -373,6 +406,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#githubgitee" class="md-nav__link">
+    如何提交到自己的Github/Gitee？
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -387,7 +437,53 @@
                   
                 
                 
-                <h1 id="_1">提交文档</h1>
+                <h1 id="_1">代码提交</h1>
+<p>实验一不需要提交实验报告，但需要大家注意保存好自己的代码，保存代码的两个方法：</p>
+<p>（1）把整个xv6-riscv-fall19目录打包，然后用scp或者mobaXterm工具的sftp拷贝出来，自行保存好整个工程文件，以备下次实验使用。</p>
+<p>（2）将代码提交到自己的Github/Gitee等代码托管服务器上（ <strong>建议同学们都采用这种方法！！！</strong> ）。</p>
+<h2 id="githubgitee">如何提交到自己的Github/Gitee？</h2>
+<p>以Github为例，步骤如下：</p>
+<p><strong>Step1</strong> ：注册并登陆自己的Github账号；</p>
+<p><strong>Step2</strong> ：打开链接https://github.com/HITSZ-SYSTEMS/xv6-riscv-fall19.git，点击Fork，即可复制到自己的Github仓库上。</p>
+<p><img alt="image-20201020102004880" src="../part4.assets/image-20201020102004880.png" /></p>
+<p><strong>Step3</strong> ：如果本地没有xv6-riscv-fall19代码，需要同学们使用<code>git</code>命令拉取实验仓库，并编译，验证其正常运行。（ <strong>如果本地已经clone了xv6-riscv-fall19，则可跳过这一步</strong> ）</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/HITSZ-SYSTEMS/xv6-riscv-fall19.git
+$ make qemu
+</code></pre></div>
+
+<p><strong>Step4</strong> ：查看远程仓库地址：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> xv6-riscv-fall19
+$ git remote -v
+</code></pre></div>
+
+<p><img alt="image-20201020103044992" src="../part4.assets/image-20201020103044992.png" /></p>
+<p><strong>Step5</strong> ：复制自己的Github仓库地址：</p>
+<p><img alt="image-20201020103236036" src="../part4.assets/image-20201020103236036.png" /></p>
+<p><strong>Step6</strong> ：通过命令行修改远程地址，然后用git remote -v命令可以看到，远程仓库地址已经变更为自己的仓库地址。</p>
+<div class="highlight"><pre><span></span><code>$ git remote set-url origin XXXX（将自己的Github仓库地址粘贴到这里）
+$ git remote -v
+</code></pre></div>
+
+<p><img alt="image-20201020103656746" src="../part4.assets/image-20201020103656746.png" /></p>
+<p><strong>Step7</strong> ：注意 <strong>切换分支</strong> ，实验一需要切到util分支：</p>
+<div class="highlight"><pre><span></span><code>$ git checkout util
+</code></pre></div>
+
+<p><strong>Step8</strong> ：编写代码并测试完成后，将代码push到自己的Git仓库。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 显示有变更的文件</span>
+$ git status 
+
+<span class="c1"># 设置提交代码时的用户信息</span>
+$ git config --global user.email <span class="s2">&quot;you@example.com&quot;</span>
+$ git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
+
+<span class="c1"># 添加指定文件到暂存区</span>
+$ git add *
+<span class="c1"># 提交暂存区到本地仓库</span>
+$ git commit -m <span class="s2">&quot;Lab1: comments XXX&quot;</span>
+<span class="c1"># 上传到远程仓库</span>
+$ git push
+</code></pre></div>
                 
               
               

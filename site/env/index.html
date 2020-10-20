@@ -545,14 +545,15 @@
 <p>2、我们实验也提供了远程实验环境供同学们使用。具体使用方式详见“<strong>远程实验环境使用指南</strong>”。</p>
 <div class="admonition 提示">
 <p class="admonition-title">提示</p>
-<p>虽然我们已经做了一些方案保证远程环境的可靠性，但在某些特殊情况下，也不能确保不出故障，同样地，也建议同学们将代码及时上传到git中。</p>
+<p>虽然我们已经做了一些方案保证远程环境的可靠性，但在某些特殊情况下，也不能确保不出故障，同样地，为安全起见，也建议同学们将代码及时上传到git中。</p>
 </div>
 <h2 id="3">3. 自行部署的实验环境</h2>
 <p>同学们也可以尝试在自己的电脑上安装实验环境。本实验也提供了两种安装方法：直接使用镜像和自行配置。</p>
 <h3 id="31">3.1 直接使用镜像</h3>
 <p>本实验提供VirtualBox + Debian的镜像，直接导入镜像即可使用。步骤如下：</p>
 <p><strong>Step1.</strong> Virtualbox和Debian镜像下载： <a href="http://10.249.12.209">http://10.249.12.209</a></p>
-<p>？？？？？？？？？？缺文件名</p>
+<p>Virtualbox安装文件：VirtualBox-6.0.14-133895-Win.exe</p>
+<p>Debian镜像：debian.ova</p>
 <p><strong>Step2.</strong>  VirtualBox安装以及镜像导入，镜像系统 <strong>用户名</strong> ：xv6，<strong>密码</strong>：123456</p>
 <p><img alt="img" src="../env.assets/clip_image002.jpg" /></p>
 <p><img alt="img" src="../env.assets/clip_image004.jpg" /></p>
@@ -567,6 +568,10 @@
 
 <p>如果下载太慢，可以直接用已经下载好的包。</p>
 <p>下载： <a href="http://10.249.12.209">http://10.249.12.209</a>，选择riscv-gnu-toolchain.tar.xz</p>
+<p>***.tar.zx压缩文件的解压命令</p>
+<div class="highlight"><pre><span></span><code>tar xvJf ***.tar.xz
+</code></pre></div>
+
 <p><strong>Step2</strong>  安装依赖包</p>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
 </code></pre></div>

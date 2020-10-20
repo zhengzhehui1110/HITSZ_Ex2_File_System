@@ -958,7 +958,7 @@
 <p>安装完成后重启VSCode，在左侧边栏的远程资源管理器工具栏中点击+号，在顶部输入ssh root@1.2.3.4（改为虚拟机ip地址） 命令并一路回车。</p>
 <p>此时在工具栏中可以看到新添加的远程主机。在远程电脑上点击连接，输入密码后将会打开新窗口连接到远程主机中。</p>
 <p>在连接到远程主机之后，需要在再次搜索并安装上述扩展，将其安装在远程主机上。C/C++扩展在安装后可能需要一段时间来下载依赖文件。</p>
-<p>VScode的详细用法查看“使用VSCode阅读源代码教程”（见QQ群）。</p>
+<p>VScode的详细用法查看<a href="https://hitsz-lab.gitee.io/os_lab/remote_env/">远程实验环境使用指南</a>“的附录1：使用VSCode登录远程环境，以及使用VSCode阅读源代码教程.pdf”（见QQ群）。</p>
 <h3 id="15-vim">1.5 Vim</h3>
 <ul>
 <li>安装vim</li>
@@ -1033,7 +1033,7 @@ gcc a.c -o a
 
 <p>建议同学们自己尝试写一个简单的Makefile文件，这里为同学们提供两个网址供大家学习参考：</p>
 <h3 id="18-git">1.8 git</h3>
-<p>先来一张图说明git的工作过程</p>
+<p>可以先看看如下链接说明git的工作过程</p>
 <p><a href="http://ixiaosi.art/2019/01/10/git/git%E4%BB%8B%E7%BB%8D/">http://ixiaosi.art/2019/01/10/git/git%E4%BB%8B%E7%BB%8D/</a></p>
 <p><code>git</code>的常用命令：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 下载一个项目和它的整个代码历史</span>
@@ -1346,10 +1346,12 @@ unzip file.zip //解压zip
 </code></pre></div>
 
 <h3 id="219-linux">2.19 Linux常用快捷键</h3>
-<p>Ctrl+C 终止当前程序的执行
-Ctrl+Z 挂起当前程序
-Ctrl+D 终止输入（若正在使用 Shell，则退出当前 Shell）
-Ctrl+I 清屏</p>
+<ul>
+<li>Ctrl+C 终止当前程序的执行</li>
+<li>Ctrl+Z 挂起当前程序</li>
+<li>Ctrl+D 终止输入（若正在使用 Shell，则退出当前 Shell）</li>
+<li>Ctrl+I 清屏</li>
+</ul>
 <h2 id="3-linux">3. Linux重定向和管道</h2>
 <div class="highlight"><pre><span></span><code><span class="nb">command</span> &lt; input.txt <span class="m">1</span>&gt; output.txt <span class="m">2</span>&gt;err.txt  
 command1 <span class="p">|</span> command2 <span class="p">|</span> command3 <span class="p">|</span> ...  
