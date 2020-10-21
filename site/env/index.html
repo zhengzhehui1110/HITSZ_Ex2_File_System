@@ -568,8 +568,8 @@
 
 <p>如果下载太慢，可以直接用已经下载好的包。</p>
 <p>下载： <a href="http://10.249.12.209">http://10.249.12.209</a>，选择riscv-gnu-toolchain.tar.xz</p>
-<p>***.tar.zx压缩文件的解压命令</p>
-<div class="highlight"><pre><span></span><code>$ tar xvJf ***.tar.xz
+<p>XXX.tar.zx压缩文件的解压命令</p>
+<div class="highlight"><pre><span></span><code>$ tar xvJf XXX.tar.xz
 </code></pre></div>
 
 <p><strong>Step2</strong>  安装依赖包</p>
@@ -582,14 +582,21 @@
 <p>备份：<code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code></p>
 <p>修改 <code>sudo vim /etc/apt/source.list</code></p>
 <p>常用的国内源有阿里源，清华源，中科大源等</p>
-<p><strong>Step3</strong> 下载QEMU4.1源码（即为qemu-4.1.0.tar.xz）</p>
+<p><strong>Step3</strong>  编译RISC-V GNU Compiler Toolchain</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> riscv-gnu-toolchain
+$ ./configure --prefix<span class="o">=</span>/usr/local
+$ sudo make
+$ <span class="nb">cd</span> ..
+</code></pre></div>
+
+<p><strong>Step4</strong> 下载QEMU4.1源码（即为qemu-4.1.0.tar.xz）</p>
 <div class="highlight"><pre><span></span><code>$ wget https://download.qemu.org/qemu-4.1.0.tar.xz
 $ tar xf qemu-4.1.0.tar.xz
 </code></pre></div>
 
 <p>如果下载太慢，可以直接用已经下载好的包。</p>
 <p>下载： <a href="http://10.249.12.209">http://10.249.12.209</a>，选择qemu-4.1.0.tar.xz</p>
-<p><strong>Step4</strong> 编译qemu                                                       </p>
+<p><strong>Step5</strong> 编译qemu                                                       </p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> qemu-4.1.0
 $ ./configure --disable-kvm --disable-werror --prefix<span class="o">=</span>/usr/local --target-list<span class="o">=</span><span class="s2">&quot;riscv64-softmmu&quot;</span>
 $ make
@@ -597,13 +604,14 @@ $ sudo make install
 $ <span class="nb">cd</span> ..
 </code></pre></div>
 
-<p><strong>Step5</strong> 检查安装是否成功</p>
+<p><strong>Step6</strong> 检查安装是否成功</p>
 <div class="highlight"><pre><span></span><code>$ riscv64-unknown-elf-gcc --version
 riscv64-unknown-elf-gcc <span class="o">(</span>GCC<span class="o">)</span> <span class="m">10</span>.1.0
 $ qemu-system-riscv64 --version
 QEMU emulator version <span class="m">4</span>.1.0
 </code></pre></div>
 
+<p>以上自行配置操作，可参考MIT官方给出的Tools Used in 6.828：<a href="https://pdos.csail.mit.edu/6.828/2019/tools.html">https://pdos.csail.mit.edu/6.828/2019/tools.html</a></p>
 <h2 id="4-xv6">4. 下载xv6源码</h2>
 <p>请clone最新代码到本地进行实验：   </p>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/HITSZ-SYSTEMS/xv6-riscv-fall19.git
