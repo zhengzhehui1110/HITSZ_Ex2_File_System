@@ -1015,7 +1015,7 @@ gcc a.c -o a
 
 <p>反汇编： <code>objdump</code>, <code>readelf</code></p>
 <h3 id="17-makefile">1.7 Makefile</h3>
-<p>什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但是，作为一个专业的程序员，特别是在Unix环境下开发的程序员，会不会写Makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。因为，Makefile关系到了整个工程的编译规则。Makefile带来的好处——自动化编译，一旦写好，只需要一个make命令，整个工程完全自动编译，极大地提高了软件开发的效率。make是一个命令工具，用于解释makefile中指令的命令工具。</p>
+<p>什么是makefile？作为一个专业的程序员，特别是在Unix（Linux）环境下开发的程序员，如果不会使用GNU make来构建和管理自己的工程，应该不能算是一个合格的专业程序员。会不会写Makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。因为，Makefile关系到了整个工程的编译、连接等规则。为工程编写Makefile的好处是能够用一个make命令来完成“自动化编译"，极大地提高了软件开发的效率。make是一个命令工具，它用于解释makefile中的指令。</p>
 <p>编写规则：</p>
 <div class="highlight"><pre><span></span><code><span class="nf">&lt;target&gt; </span><span class="o">:</span> &lt;<span class="n">prerequisites</span>&gt; 
 <span class="err">[tab]</span>  <span class="err">&lt;commands&gt;</span>
