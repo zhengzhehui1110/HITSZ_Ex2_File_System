@@ -577,8 +577,11 @@
 <h4 id="22">2.2  实验提示</h4>
 <p><strong>1)</strong>   <strong>sleep</strong> </p>
 <p>a)    请注意判断命令输入的内容，给出友好的错误提示；</p>
-<p>b)    调用sleep();</p>
-<p>c)    调用exit()确保main函数的退出。</p>
+<p>b)    命令行参数作为字符串传递，你可以使用atoi将它转换成一个整数(见user/ulib.c)。</p>
+<p>c)    使用系统调用sleep()（见user/usys.S 与 kernel/sysproc.c）。</p>
+<p>d)    调用exit()确保main函数的退出。</p>
+<p>e)    在makefile中将程序添加到UPROGS。</p>
+<p>f)    请在user/sleep.c实现。</p>
 <p><strong>2)</strong>   <strong>pingpong</strong></p>
 <p>a)    使用pipe()创建管道：</p>
 <p>例如：</p>
@@ -590,6 +593,7 @@
 
 <p>b)    使用fork()创建子进程，注意根据返回值，判断父子进程；</p>
 <p>c)    利用read(), write()函数对管道进行读写。</p>
+<p>d)    请在user/pingpong.c中实现。</p>
 <p><strong>3)</strong>   <strong>primes</strong></p>
 <p>a)    根据需求利用fork()创建子进程;</p>
 <p>b)    利用多个pipe()创建的管道在父子进程间进行数据的传输；</p>
@@ -600,7 +604,10 @@
 <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="err">“</span><span class="n">world</span><span class="err">\</span><span class="n">en</span><span class="err">”</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
 </code></pre></div>
 
-<p>d)    注意及时关闭管道的写端，否则读出端无法判断传输的结束。</p>
+<p>d)    管道read是一直阻塞，直到管道有数据写入；如果绑定在这个管道的写端口关闭了，read返回0。注意及时关闭管道的写端，否则读出端无法判断传输的结束。</p>
+<p>e)  要确保子进程先退出，父进程再退出。要不然容易出现如下错误，即$符号先打印出来，但是子进程还在运行状态中。如下图所示。</p>
+<p><img alt="image-20201027155243519" src="../part3.assets/image-20201027155243519.png" /></p>
+<p><img alt="image-20201027155303167" src="../part3.assets/image-20201027155303167.png" /></p>
 <p><strong>4)</strong>   <strong>find</strong></p>
 <p>a)    可参照user/ls.c的逻辑实现；</p>
 <p>b)    使用递归允许find进入到子目录；</p>
@@ -610,7 +617,8 @@
 <p>a)    xv6中的xargs基本功能演示：</p>
 <p><img alt="img" src="../part3.assets/clip_image007.png" /></p>
 <p>b)    换行符’\n’表示新的一行，”ctrl + d”作为整个命令的结束；</p>
-<p>c)    使用fork()和exec()系统对每一行输入调用命令；</p>
+<p>c)    使用fork()和exec()系统对每一行输入调用命令；exec接收的二维参数数组argv，argv[0]必须是该命令本身，最后一个参数argv[size-1]必须为0，否则将执行失败。</p>
+<p><img alt="image-20201027155755713" src="../part3.assets/image-20201027155755713.png" /></p>
 <p>d)    使用wait()等待子进程运行完命令；</p>
 <p>e)    可以使用kernel/param.h中定义的MAXARG来声明argv的长度；</p>
 <p>f)     使用make clean和make qemu清理文件系统并重新运行。</p>
