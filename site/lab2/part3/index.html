@@ -1,0 +1,858 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+    
+    
+      
+        <title>实验提示 - 操作系统（2020秋季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4007cdc.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            操作系统（2020秋季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实验提示
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        实验须知
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab1/part1/" class="md-tabs__link">
+          Lab1：xv6与Unix实用程序
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../part1/" class="md-tabs__link md-tabs__link--active">
+          Lab2：实现一个简单的shell
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    操作系统（2020秋季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="实验须知" class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../env/" title="实验平台以及环境配置" class="md-nav__link">
+      实验平台以及环境配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/" title="Linux开发环境基础知识" class="md-nav__link">
+      Linux开发环境基础知识
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../remote_env/" title="远程实验环境使用指南" class="md-nav__link">
+      远程实验环境使用指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lab1：xv6与Unix实用程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：xv6与Unix实用程序" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab1：xv6与Unix实用程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Lab2：实现一个简单的shell
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：实现一个简单的shell" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab2：实现一个简单的shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实验提示
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="实验提示" class="md-nav__link md-nav__link--active">
+      实验提示
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 关于实验测评
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 关于实验测评">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-testsh" class="md-nav__link">
+    1.1 测评程序testsh分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-testsh" class="md-nav__link">
+    1.2 测评testsh命令分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2、实验提示
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 关于实验测评
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 关于实验测评">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-testsh" class="md-nav__link">
+    1.1 测评程序testsh分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-testsh" class="md-nav__link">
+    1.2 测评testsh命令分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2、实验提示
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="_1">实验提示</h1>
+<h3 id="1">1. 关于实验测评</h3>
+<p>本次实验要求实验一个简单的shell，需要能通过grade-lab-sh脚本的测试。通过查看grade-lab-sh代码可知，这次实验的代码需要写在user/nsh.c文件中，要求如下：</p>
+<p>1）<strong>禁止</strong> 在user/nsh.c文件使用 <strong>malloc() / sbrk()</strong> 函数</p>
+<p>2）需要通过 <strong>testsh nsh</strong> 测试。</p>
+<h4 id="11-testsh">1.1 测评程序testsh分析</h4>
+<p>testsh命令是由testsh.c文件编译生成。查看testsh.c代码可知，必须要通过 <strong>t1~t9</strong> 总共9项测试。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// t1：test a command with arguments.</span>
+<span class="c1">// simple echo:</span>
+<span class="c1">// 输入命令：echo hello goodbye\n</span>
+<span class="c1">// 期待输出：hello goodbye</span>
+<span class="n">one</span><span class="p">(</span><span class="s">&quot;echo hello goodbye</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;hello goodbye&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t2：test a command with arguments.</span>
+<span class="c1">// simple grep: </span>
+<span class="c1">// 输入命令：grep constitute README\n</span>
+<span class="c1">// 期待输出：The code in the files that constitute xv6 is</span>
+<span class="n">one</span><span class="p">(</span><span class="s">&quot;grep constitute README</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;The code in the files that constitute xv6 is&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t3：test a command, then a newline, then another command.</span>
+<span class="c1">// two commands: </span>
+<span class="c1">// 输入命令：echo x\necho goodbye\n</span>
+<span class="c1">// 期待输出：goodbye</span>
+<span class="n">one</span><span class="p">(</span><span class="s">&quot;echo x</span><span class="se">\n</span><span class="s">echo goodbye</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;goodbye&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t4：test output redirection: echo xxx &gt; file</span>
+<span class="c1">// output redirection: </span>
+<span class="c1">// 输入命令：echo ”data（随机生成12个字节的字符串）” &gt; “文件名为随机生成12个字节的字符串的文件”</span>
+<span class="c1">// 期待输出：读取输出重定向文件，查看该文件存储的数据是否与data一致</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="s">&quot;echo &quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">data</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot; &gt; &quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">file</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="err">……</span>
+    <span class="n">readfile</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t5：test input redirection: cat &lt; file</span>
+<span class="c1">// input redirection: </span>
+<span class="c1">// 输入命令：cat &lt; &quot;file（其文件名和data都是随机生成的）&quot;</span>
+<span class="c1">// 期待输出：data（随机生成的12个字节的字符串）</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">writefile</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="s">&quot;cat &lt; &quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">file</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>   
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t6：test a command with both input and output redirection.</span>
+<span class="c1">// both redirections: </span>
+<span class="c1">// 输入命令：grep pointers &lt; README &gt; testsh.out</span>
+<span class="c1">// 期待输出：provides pointers to on-line resources</span>
+<span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;grep pointers &lt; README &gt; testsh.out</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="err">……</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;provides pointers to on-line resources&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t7：test a pipe with cat filename | cat.</span>
+<span class="c1">// simple pipe: </span>
+<span class="c1">// 输入命令：cat name（文件名为name，文件内存储的数据为data） | cat</span>
+<span class="c1">// 期待输出：data</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">randstring</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">writefile</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="s">&quot;cat &quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">name</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot; | cat</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t8：test a pipeline that has both redirection and a pipe.</span>
+<span class="c1">// pipe and redirects: </span>
+<span class="c1">// 输入命令：grep suggestions &lt; README | wc &gt; testsh.out\n</span>
+<span class="c1">// 期待输出：1 11 71</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;grep suggestions &lt; README | wc &gt; testsh.out</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="err">……</span>
+    <span class="n">readfile</span><span class="p">(</span><span class="s">&quot;testsh.out&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;1 11 71&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// t9：ask the shell to execute many commands, to check if it leaks file descriptors.</span>
+<span class="c1">// lots of commands: </span>
+<span class="c1">// 输入命令：echo x &lt; README &gt; tso\necho x | echo\n …… echo term（随机生成的12个字节的字符串） &gt;  tso\ncat &lt; tso\n </span>
+<span class="c1">// 期待输出：term（随机生成的12个字节的字符串）   </span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="mi">36</span> <span class="o">+</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">cmd</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;testsh: malloc failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="o">+</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">6</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;echo x &lt; README &gt; tso</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;echo x | echo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;echo &quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">term</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot; &gt; tso</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="s">&quot;cat &lt; tso</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</code></pre></div>
+
+<h4 id="12-testsh">1.2 测评testsh命令分析</h4>
+<p>从上述对testsh测评程序的分析可知，本次实验必须要实现如下功能：</p>
+<p>1)    能够执行带参命令 ，例如 echo、grep、cat等；</p>
+<p>2)    能够支持输入输出 <strong>重定向</strong> ；</p>
+<p>3)    能够支持 <strong>管道</strong> 。</p>
+<p><strong>涉及到的shell命令</strong></p>
+<div class="highlight"><pre><span></span><code>echo：用于字符串的输出
+
+grep：常用于搜索文件中是否含有某些特定模式的字符串，该命令以行为单位读取文本并使用正则表达式进行匹配，匹配成功后打印出该行文本。
+
+cat：常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用
+cat filename：一次显示整个文件
+cat &gt; filename 从键盘创建一个文件，只能创建新文件，不能编辑已有文件
+
+wc：统计指定文件中的字节数、字数、行数，并将统计结果显示输出
+</code></pre></div>
+
+<p><strong>涉及到的shell特殊符号</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;</td>
+<td>输出重定向</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>输入重定向</td>
+</tr>
+<tr>
+<td>|</td>
+<td>管道符，分隔两个管道命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">2、实验提示</h3>
+<ol>
+<li>
+<p>不需要实现本实验未要求的特性，例如圆括号、引号等；</p>
+</li>
+<li>
+<p>就特性而言，nsh比xv6的sh简单得多，因此请从头开始编写nsh，可以参考xv6 shell源代码（在user/sh.c中）获得想法，若借用代码，请注释说明来源及代码的意义；</p>
+</li>
+<li>
+<p>xv6在user/ulib.c中提供了一个小的C函数库，这些函数已经在头文件user/user.h中声明了，请按需使用它们。再次强调，本实验不允许使用 <strong>malloc() / sbrk()</strong> 函数；</p>
+</li>
+<li>
+<p>请注意关掉无用的文件句柄，这样做既可以防止句柄消耗完，又因为在从管道进行读取时，只有管道的写端全关闭之后才能判断数据传输的结束；</p>
+</li>
+<li>
+<p>请检查每个系统调用接口的返回值时，并给出合理提示；</p>
+</li>
+<li>
+<p><strong>测试用例testsh重定向了shell的标准输出，所以实现的shell应该使用fprintf(2，…)将错误和调试消息打印到文件描述符2，即标准错误</strong> ；</p>
+</li>
+<li>
+<p>如果测评testsh程序报错，可以用这样的方式进行调试：在testsh中添加打印，确认它希望shell运行的命令，并修改shell以打印它接收到的命令行和它执行的命令；还有一个调试技巧，即修改testsh.c中的one()， 打印它从shell中读取的输出和它期望的输出。</p>
+</li>
+</ol>
+<p><strong>提示：</strong></p>
+<p>1)    以上内容来源为MIT XV6 6.S081课程Lab2官方实验指导书https://pdos.csail.mit.edu/6.828/2019/labs/sh.html</p>
+<p>2)    本实验可以查阅《xv6 book》chapter1和chapter2中相关的内容。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../part2/" title="实验原理" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验原理
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../part4/" title="提交文档" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                提交文档
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

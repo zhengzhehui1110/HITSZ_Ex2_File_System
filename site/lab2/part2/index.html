@@ -1,0 +1,1015 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+    
+    
+      
+        <title>实验原理 - 操作系统（2020秋季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4007cdc.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            操作系统（2020秋季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实验原理
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        实验须知
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab1/part1/" class="md-tabs__link">
+          Lab1：xv6与Unix实用程序
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../part1/" class="md-tabs__link md-tabs__link--active">
+          Lab2：实现一个简单的shell
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    操作系统（2020秋季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="实验须知" class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../env/" title="实验平台以及环境配置" class="md-nav__link">
+      实验平台以及环境配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/" title="Linux开发环境基础知识" class="md-nav__link">
+      Linux开发环境基础知识
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../remote_env/" title="远程实验环境使用指南" class="md-nav__link">
+      远程实验环境使用指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lab1：xv6与Unix实用程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：xv6与Unix实用程序" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab1：xv6与Unix实用程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Lab2：实现一个简单的shell
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：实现一个简单的shell" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab2：实现一个简单的shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实验原理
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="实验原理" class="md-nav__link md-nav__link--active">
+      实验原理
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-shell" class="md-nav__link">
+    1. 什么是shell？
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 什么是shell？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-shellxv6" class="md-nav__link">
+    1.1 shell在xv6中存在形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-shell" class="md-nav__link">
+    1.2 shell如何执行用户的指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-xv6-shell" class="md-nav__link">
+    1.3 xv6 shell的执行流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 进程创建
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 进程创建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-fork" class="md-nav__link">
+    2.1 fork()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fork" class="md-nav__link">
+    2.2 调用fork()函数时发生了什么呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-exec" class="md-nav__link">
+    2.3 exec()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-shell" class="md-nav__link">
+    2.4 使用shell命令时发生了什么呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xv6" class="md-nav__link">
+    2.5  xv6进程控制相关接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shell" class="md-nav__link">
+    3. shell输入/输出重定向
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 管道
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part3/" title="实验提示" class="md-nav__link">
+      实验提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-shell" class="md-nav__link">
+    1. 什么是shell？
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 什么是shell？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-shellxv6" class="md-nav__link">
+    1.1 shell在xv6中存在形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-shell" class="md-nav__link">
+    1.2 shell如何执行用户的指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-xv6-shell" class="md-nav__link">
+    1.3 xv6 shell的执行流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 进程创建
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 进程创建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-fork" class="md-nav__link">
+    2.1 fork()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fork" class="md-nav__link">
+    2.2 调用fork()函数时发生了什么呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-exec" class="md-nav__link">
+    2.3 exec()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-shell" class="md-nav__link">
+    2.4 使用shell命令时发生了什么呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xv6" class="md-nav__link">
+    2.5  xv6进程控制相关接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shell" class="md-nav__link">
+    3. shell输入/输出重定向
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 管道
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="_1">实验原理</h1>
+<h3 id="1-shell">1. 什么是shell？</h3>
+<p>Shell的英文含义是“壳”；它是相对于内核来说的，因为它是建立在内核的基础上，面向用户的一种应用程序。Shell连接了用户和内核，让用户能够更加高效、安全、低成本地使用内核。</p>
+<p>【参考资料】</p>
+<p>[1] 《鸟哥的Linux私房菜 - 基础文件》认识Bash Shell</p>
+<p>[2] Shell是什么？1分钟理解Shell的概念！ <a href="http://c.biancheng.net/view/706.html">http://c.biancheng.net/view/706.html</a></p>
+<h4 id="11-shellxv6">1.1 shell在xv6中存在形式</h4>
+<p>与Linux一样，xv6也是内核与界面分离的，它是脱离图形界面而单独运行，即在无图形界面下的终端运行环境下shell。</p>
+<p>shell作为一个应用程序，它并不是内核的一部分。shell程序在执行比如文件操作、输入输出、进程管理等都得依赖内核。大部分情况下，shell都会去调用内核提供的系统调用接口，这就是shell在使用内核，只是这个过程被shell隐藏起来了。</p>
+<p>同时，shell并不是一个特别的用户程序，这也意味着shell是很容易被替代的，也就导致了现代Unix系统有各种各样的shell，每一个shell都有着自己的用户界面和脚本特性。xv6 shell本质上是一个Unix Bourne shell的简单实现。</p>
+<h4 id="12-shell">1.2 shell如何执行用户的指令</h4>
+<p>shell有两种执行指令的方式：</p>
+<p>1）用户事先编写一个sh脚本文件，内含shell脚本，然后用shell程序执行该脚本。</p>
+<p>2）用户直接在shell界面上执行shell命令</p>
+<h4 id="13-xv6-shell">1.3 xv6 shell的执行流程</h4>
+<p><strong>1）</strong> shell执行getcmd获得用户输入的命令(见user/sh.c)</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="err">……</span> 
+    <span class="k">while</span><span class="p">(</span><span class="n">getcmd</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;c&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;d&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">buf</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="p">){</span>
+      <span class="c1">// Chdir must be called by the parent, not the child.</span>
+      <span class="n">buf</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// chop \n</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">chdir</span><span class="p">(</span><span class="n">buf</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;cannot cd %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">runcmd</span><span class="p">(</span><span class="n">parsecmd</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+    <span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>   
+</code></pre></div>
+
+<p><strong>2）</strong> shell执行fork创建一个shell进程的副本，然后shell进行wait状态</p>
+<p><strong>3）</strong> 调用parsecmd(buf)解释输入的命令。</p>
+<p>​   parsecmd执行的核心函数的parseline，这个函数是递归执行的，其执行流程如下：</p>
+<p>​   <strong>Step1</strong> :  首先执行parsepipe的核心函数parseexec，调用execcmd，生成一个execcmd的结构体，然后调用parseredirs函数，检查是否有重定向符号"&lt;“或”&gt;"，如果有，则将之前的execcmd改为redircmd。将命令的入参保存在cmd-&gt;argv中。</p>
+<p>​   <strong>Step2</strong> ：接着，检查用户输入的命令中是否有管道命令，如果有，递归调用parsepipe，则建立管道连接</p>
+<p>​   <strong>Step3</strong> ：返回parseline，执行命令中是否有&amp;（返回命令），如果有，则生成一个新的backcmd</p>
+<p>​   <strong>Step4</strong> ：检查是否有；（多条命令分别要执行），如果有，递归调用parseline，将所有的命令分别解析后连接起来。</p>
+<p><strong>4）</strong> shell执行runcmd运行用户的命令</p>
+<p><strong>5）</strong> runcmd函数调用exec系统调用加载适当的函数如：echo、cat、grep等</p>
+<p><strong>6）</strong> 在函数（如：echo、cat、grep）执行结束，接着执行exit系统调用返回shell，shell从wait中退出。</p>
+<h3 id="2">2. 进程创建</h3>
+<p>在xv6环境下，由两个基本的操作用于创建和修改进程：</p>
+<p>fork()：用来创建一个新的进程，该进程几乎是当前进程的一个完全拷贝。</p>
+<p>exec()：用来启动另外的进程以取代当前运行的进程。</p>
+<h4 id="21-fork"><strong>2.1 fork()</strong></h4>
+<p>fork在英文中是”分叉“的意思。因为一个进程在运行中，如果使用了fork，就产生了另一个进程，于是进程就”分叉“了。</p>
+<h4 id="22-fork">2.2 调用fork()函数时发生了什么呢？</h4>
+<p>fork函数启动了一个新的进程，这个进程几乎时当前进程的一个拷贝：子进程和父进程使用相同的代码段；子进程复制父进程的堆栈段和数据段。这样，父进程的所有数据都可以留给子进程，但是，子进程一旦开始运行，虽然它继承了父进程的一切数据，但实际上，数据却已经分开了，相互之间不再有影响了，也就是说，它们之间不再共享任何数据了。它们再要交互信息时，只有通过进程间通信来实现。</p>
+<h4 id="23-exec">2.3 exec()</h4>
+<p>一个进程一旦调用exec类函数，它本身就”死亡“了，系统把代码段替换成了新的程序的代码，废弃原有的数据段和堆栈段，并为新程序分配新的数据段与堆栈段。</p>
+<h4 id="24-shell">2.4 使用shell命令时发生了什么呢？</h4>
+<p>我们平时使用shell命令时，产生的子进程方式大体有以下两种方式：</p>
+<p>第一种：<strong>只使用fork()函数</strong> ，子进程几乎时当前进程的一个拷贝，父进程中的函数、全局变量、别名以及环境变量在子进程中仍然有效。注意：子进程只是父进程的拷贝，两者间并不共享。（这种方法也称为 <strong>子shell</strong> ）</p>
+<p>第二种：<strong>使用了fork()后，又使用了exec()函数</strong> ，这样新建子进程只留下了进程ID，这个子进程的i地址空间代码和数据都被新程序的代码和数据刷新替换。（这种方法也称为 <strong>子进程</strong> ）</p>
+<h4 id="25-xv6">2.5  xv6进程控制相关接口</h4>
+<p>1)    创建进程</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">fork</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>  <span class="cm">/*返回进程的pid, 一次调用，两次返回*/</span>
+</code></pre></div>
+
+<p>2)    进程退出</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">exit</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>  <span class="cm">/*直接退出当前进程，一次调用，0次返回*/</span>
+</code></pre></div>
+
+<p>3)    进程等待</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">wait</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">);</span> <span class="cm">/*常用wait(0)等待子进程退出*/</span>
+</code></pre></div>
+
+<p>4)    进程替换</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">exec</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">path</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">);</span> <span class="cm">/*使用新的进程映像替换当前进程映像*/</span>
+<span class="cm">/* 使用注意事项：</span>
+<span class="cm">* exec接收的二维参数数组argv，argv[0]必须是该命令本身，</span>
+<span class="cm">* 最后一个参数argv[size-1]必须为0，否则将执行失败。</span>
+<span class="cm">*/</span>
+</code></pre></div>
+
+<h3 id="3-shell">3. shell输入/输出重定向</h3>
+<p>shell重定向有两种：输入重定向和输出重定向。所谓重定向，即改变输入与输出的方向。 </p>
+<ul>
+<li>输入方向：即数据从哪里流向程序。一般情况下，从键盘读取用户输入的数据，然后再把数据给程序（Shell脚本程序）中使用，这就是标准输入方向。如果改变了它的方向，数据就从其他地方流入，也就是输入重定向。</li>
+<li>输出方向：即数据从程序流向哪里。一般情况下，将程序中产生的数据直接呈现到显示器上，这就是标准的输出方向。如果改变了它的方向，数据就流向其他地方，也就是输出重定向。</li>
+</ul>
+<p>Unix/Linux中一切皆文件，包括标准输入设备（键盘）和标准输出设备（显示器）在内的所有计算机硬件都是文件。同样地，xv6也会给每个文件分配一个整数的ID，也就是文件描述符（File Descriptor），其中0，1，2这三个文件描述符是特殊用途：</p>
+<table>
+<thead>
+<tr>
+<th>文件描述符</th>
+<th>文件名</th>
+<th>类型</th>
+<th>硬件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>stdin</td>
+<td>标准输入文件</td>
+<td>键盘</td>
+</tr>
+<tr>
+<td>1</td>
+<td>stdout</td>
+<td>标准输出文件</td>
+<td>显示器</td>
+</tr>
+<tr>
+<td>2</td>
+<td>stderr</td>
+<td>标准错误输出文件</td>
+<td>显示器</td>
+</tr>
+</tbody>
+</table>
+<p>文件描述符0、1、2默认都是打开的，在重定向的过程中，0、1、2这三个文件描述符可以直接使用。</p>
+<p>文件描述符是一个强大的抽象，因为它隐藏了连接对象的细节，进程向文件描述符1写入也许是写到一个文件，一个设备如控制台，或者一个管道。</p>
+<p>下面是shell执行命令cat &lt; input.txt 代码test.c</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;kernel/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;kernel/stat.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;user/user.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
+    <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">open</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+        <span class="n">exec</span><span class="p">(</span><span class="s">&quot;cat&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">wait</span><span class="p">();</span>
+    <span class="n">exit</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>运行结果如下：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">echo</span> hello world &gt; input.txt
+$ <span class="nb">test</span>
+hello world
+</code></pre></div>
+
+<p>close系统调用会释放一个文件描述符，以便让未来的open、pipe或者dup（复制文件描述符）等系统调用可以再利用。新分配的文件描述符总是当前进程未使用的最小的那个。</p>
+<p>在子进程关闭文件描述符0后，open保证在新打开的input.txt文件时会使用文件描述符0，因为0时最小可用文件描述符，然后cat就基于文件描述符0代表的input.txt执行。</p>
+<p>【参考资料】</p>
+<p>[1] xv6 book, 1.2 I/O and File descriptors, P13-P15</p>
+<p>[2] Linux Shell重定向（输入输出重定向）精讲: <a href="http://c.biancheng.net/view/942.html">http://c.biancheng.net/view/942.html</a></p>
+<p>[3] Shell 输入/输出重定向: <a href="https://www.runoob.com/linux/linux-shell-io-redirections.html">https://www.runoob.com/linux/linux-shell-io-redirections.html</a></p>
+<h3 id="4">4. 管道</h3>
+<p>管道是进程间通信的一种通信方式。</p>
+<blockquote>
+<p><strong>什么是进程间通信？</strong></p>
+<p>每个进程各自由不同的用户地址空间，任何一个进程的全局变量在另一个进程中都看不到，所以进程之间要交换数据必须通过内核，在内核中开辟一块缓冲区，进程A把数据从用户空间拷贝到内核缓冲区，进程B再从内核缓冲区把数据读走，内核提供的这种机制称为进程间通信。</p>
+</blockquote>
+<p>常见的进程间通信方式有：</p>
+<p>管道pipe、命名管道FIFO、消息队列Message Queue、共享内存Shared memory、信号量Semaphore、套接字Socket、信号Signal。</p>
+<blockquote>
+<p><strong>管道通信的特点</strong> ：</p>
+<p>1、管道只允许具有血缘关系的进程间通信，如父子进程间的通信。</p>
+<p>2、管道只允许单向通信。</p>
+<p>3、管道内部保证同步机制，从而保证访问数据的一致性。</p>
+<p>4、面向字节流。</p>
+<p>5、管道随进程，进程在管道在，进程消失管道对应的端口也关闭，两个进程都消失，管道也消失。</p>
+</blockquote>
+<p>接下来的示例代码运行了程序wc（用于统计指定文件中的字节数、字数、行数），它的标准输出绑定到了一个管道的读端口。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="kt">char</span>
+<span class="o">*</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;wc&quot;</span><span class="p">;</span>
+<span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">pipe</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s">&quot;/bin/wc&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">write</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&quot;hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>pipe系统调用，创建了一个新的管道并把读取和写入文件描述符保存在数组p里。fork之后，父子进程都有代表管道的文件描述符。子进程把读取端复制到文件描述符0，关闭p中的文件描述符，并执行wc。当wc从自己的标准输入读取时，实际是从管道读取。父进程关闭了管道的读取端，向管道写入，然后关闭了写入端。</p>
+<p><img alt="管道" src="../part2.assets/%E7%AE%A1%E9%81%93.png" /></p>
+<p>如果数据没有准备好，那么对管道执行的 read  会一直等待，直到有数据了或者其他绑定在这个管道写端口的描述符都已经关闭了。在后一种情况中， read  会返回 0，就像是一份文件读到了最后。读操作会一直阻塞直到不可能再有新数据到来了，这就是为什么我们在执行  wc  之前要关闭子进程的写端口。如果  wc  指向了一个管道的写端口，那么  wc  就永远看不到 eof了。</p>
+<p>xv6 shell用了跟上面代码类似的方式（user/sh.c:100）实现了像grep fork sh.c | wc -l这样的管道。然后它为管道左右两端都调用  runcmd  ，然后通过两次  wait  等待左右两端结束。管道右端可能也是一个带有管道的指令，如  a | b | c  , 它  fork  两个新的子进程（一个  b  一个  c  ），因此，shell 可能创建出一颗进程树。树的叶子节点是命令，中间节点是进程，它们会等待左子和右子执行结束。理论上，你可以让中间节点都运行在管道的左端，但是如果按这种方法去做会使实现复杂化</p>
+<div class="highlight"><pre><span></span><code>  <span class="k">case</span> <span class="nl">PIPE</span><span class="p">:</span>
+    <span class="n">pcmd</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">pipecmd</span><span class="o">*</span><span class="p">)</span><span class="n">cmd</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">panic</span><span class="p">(</span><span class="s">&quot;pipe&quot;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="n">close</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="n">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="n">runcmd</span><span class="p">(</span><span class="n">pcmd</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="n">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="n">runcmd</span><span class="p">(</span><span class="n">pcmd</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+</code></pre></div>
+
+<p>【参考资料】</p>
+<p>[1] xv6 book, 1.3 Pipes, P15-P16</p>
+<p>[2] 进程间的通信方式——pipe（管道）: <a href="https://blog.csdn.net/skyroben/article/details/71513385">https://blog.csdn.net/skyroben/article/details/71513385</a></p>
+<p>[3] Linux Shell管道详解: <a href="http://c.biancheng.net/view/3131.html">http://c.biancheng.net/view/3131.html</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../part1/" title="实验概述" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验概述
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../part3/" title="实验提示" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                实验提示
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
