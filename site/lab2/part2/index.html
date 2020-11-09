@@ -713,7 +713,7 @@
 <p>[1] 《鸟哥的Linux私房菜 - 基础文件》认识Bash Shell</p>
 <p>[2] Shell是什么？1分钟理解Shell的概念！ <a href="http://c.biancheng.net/view/706.html">http://c.biancheng.net/view/706.html</a></p>
 <h4 id="11-shellxv6">1.1 shell在xv6中存在形式</h4>
-<p>与Linux一样，xv6也是内核与界面分离的，它是脱离图形界面而单独运行，即在无图形界面下的终端运行环境下shell。</p>
+<p>与Linux一样，xv6也是内核与界面分离的，它是脱离图形界面而单独运行，即在无图形界面下的终端运行环境下的shell。</p>
 <p>shell作为一个应用程序，它并不是内核的一部分。shell程序在执行比如文件操作、输入输出、进程管理等都得依赖内核。大部分情况下，shell都会去调用内核提供的系统调用接口，这就是shell在使用内核，只是这个过程被shell隐藏起来了。</p>
 <p>同时，shell并不是一个特别的用户程序，这也意味着shell是很容易被替代的，也就导致了现代Unix系统有各种各样的shell，每一个shell都有着自己的用户界面和脚本特性。xv6 shell本质上是一个Unix Bourne shell的简单实现。</p>
 <h4 id="12-shell">1.2 shell如何执行用户的指令</h4>
@@ -874,8 +874,7 @@ hello world
 </blockquote>
 <p>接下来的示例代码运行了程序wc（用于统计指定文件中的字节数、字数、行数），它的标准输出绑定到了一个管道的读端口。</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-<span class="kt">char</span>
-<span class="o">*</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;wc&quot;</span><span class="p">;</span>
 <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">pipe</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>

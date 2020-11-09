@@ -559,7 +559,7 @@
                 <h1 id="_1">实验概述</h1>
 <h2 id="1">1.  实验目的</h2>
 <ol>
-<li>了解XV6 shell的工作原理。</li>
+<li>了解xv6 shell的工作原理。</li>
 <li>复习创建进程、退出进程、等待进程等概念，并回顾xv6中与进程控制相关的系统调用接口。</li>
 <li>通过本实验加深理解exec()函数加载和运行程序的特点，并掌握其使用方法。</li>
 <li>学会动手实现输入输出重定向，并应用管道实现进程间通信。</li>
@@ -570,7 +570,7 @@
 <p><strong>请切换到sh分支</strong> ，并为xv6实现一个简单的shell，它能够：</p>
 <p>1)    执行常见的带参命令 ，例如 echo、ls、grep、cat等；</p>
 <p>2)    支持输入输出 <strong>重定向</strong> ；</p>
-<p>3)    支持 <strong>管道</strong>  。</p>
+<p>3)    支持 <strong>两元素管道</strong>  。</p>
 <p>也就是说，它能如xv6本身的shell sh一样运行以下命令：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> hello goodbye
 grep constitute README
