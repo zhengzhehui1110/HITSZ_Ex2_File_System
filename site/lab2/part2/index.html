@@ -895,7 +895,7 @@ hello world
 <p>pipe系统调用，创建了一个新的管道并把读取和写入文件描述符保存在数组p里。fork之后，父子进程都有代表管道的文件描述符。子进程把读取端复制到文件描述符0，关闭p中的文件描述符，并执行wc。当wc从自己的标准输入读取时，实际是从管道读取。父进程关闭了管道的读取端，向管道写入，然后关闭了写入端。</p>
 <p><img alt="管道" src="../part2.assets/%E7%AE%A1%E9%81%93.png" /></p>
 <p>如果数据没有准备好，那么对管道执行的 read  会一直等待，直到有数据了或者其他绑定在这个管道写端口的描述符都已经关闭了。在后一种情况中， read  会返回 0，就像是一份文件读到了最后。读操作会一直阻塞直到不可能再有新数据到来了，这就是为什么我们在执行  wc  之前要关闭子进程的写端口。如果  wc  指向了一个管道的写端口，那么  wc  就永远看不到 eof了。</p>
-<p>xv6 shell用了跟上面代码类似的方式（user/sh.c:100）实现了像grep fork sh.c | wc -l这样的管道。然后它为管道左右两端都调用  runcmd  ，然后通过两次  wait  等待左右两端结束。管道右端可能也是一个带有管道的指令，如  a | b | c  , 它  fork  两个新的子进程（一个  b  一个  c  ），因此，shell 可能创建出一颗进程树。树的叶子节点是命令，中间节点是进程，它们会等待左子和右子执行结束。理论上，你可以让中间节点都运行在管道的左端，但是如果按这种方法去做会使实现复杂化</p>
+<p>xv6 shell用了跟上面代码类似的方式（user/sh.c:100）实现了像grep fork sh.c | wc -l这样的管道。然后它为管道左右两端都调用  runcmd  ，然后通过两次  wait  等待左右两端结束。管道右端可能也是一个带有管道的指令，如  a | b | c  , 它  fork  两个新的子进程（一个  b  一个  c  ），因此，shell 可能创建出一颗进程树。树的叶子节点是命令，中间节点是进程，它们会等待左子和右子执行结束。理论上，你可以让中间节点都运行在管道的左端，但是如果按这种方法去做会使实现复杂化。</p>
 <div class="highlight"><pre><span></span><code>  <span class="k">case</span> <span class="nl">PIPE</span><span class="p">:</span>
     <span class="n">pcmd</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">pipecmd</span><span class="o">*</span><span class="p">)</span><span class="n">cmd</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
