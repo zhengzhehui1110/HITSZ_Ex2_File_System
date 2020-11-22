@@ -1,0 +1,1097 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+    
+    
+      
+        <title>实验原理 - 操作系统（2020秋季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4007cdc.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            操作系统（2020秋季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实验原理
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        实验须知
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab1/part1/" class="md-tabs__link">
+          Lab1：xv6与Unix实用程序
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab2/part1/" class="md-tabs__link">
+          Lab2：实现一个简单的shell
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../part1/" class="md-tabs__link md-tabs__link--active">
+          Lab3：锁机制的应用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    操作系统（2020秋季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="实验须知" class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../env/" title="实验平台以及环境配置" class="md-nav__link">
+      实验平台以及环境配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/" title="Linux开发环境基础知识" class="md-nav__link">
+      Linux开发环境基础知识
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../remote_env/" title="远程实验环境使用指南" class="md-nav__link">
+      远程实验环境使用指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lab1：xv6与Unix实用程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：xv6与Unix实用程序" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab1：xv6与Unix实用程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Lab2：实现一个简单的shell
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：实现一个简单的shell" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab2：实现一个简单的shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part3/" title="实验提示" class="md-nav__link">
+      实验提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Lab3：锁机制的应用
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：锁机制的应用" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab3：锁机制的应用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实验原理
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="实验原理" class="md-nav__link md-nav__link--active">
+      实验原理
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 内存分配器
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 内存分配器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-xv6memory-allocator" class="md-nav__link">
+    1.1 xv6的内存分配器（Memory Allocator）简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-xv6lock" class="md-nav__link">
+    1.2 XV6中Lock的实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-kalloc" class="md-nav__link">
+    1.3 锁与kalloc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 锁对并行性的破坏
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-kalloctest" class="md-nav__link">
+    1.5 测评程序kalloctest对锁的检测
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 磁盘缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-xv6-buffer-cache" class="md-nav__link">
+    2.1 xv6 Buffer Cache简介
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 xv6 Buffer Cache简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#22-bio" class="md-nav__link">
+    2.2 锁与bio
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 锁与bio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 自旋锁
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    2.2.2 睡眠锁
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 内存分配器
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 内存分配器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-xv6memory-allocator" class="md-nav__link">
+    1.1 xv6的内存分配器（Memory Allocator）简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-xv6lock" class="md-nav__link">
+    1.2 XV6中Lock的实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-kalloc" class="md-nav__link">
+    1.3 锁与kalloc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 锁对并行性的破坏
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-kalloctest" class="md-nav__link">
+    1.5 测评程序kalloctest对锁的检测
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 磁盘缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-xv6-buffer-cache" class="md-nav__link">
+    2.1 xv6 Buffer Cache简介
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 xv6 Buffer Cache简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#22-bio" class="md-nav__link">
+    2.2 锁与bio
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 锁与bio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 自旋锁
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    2.2.2 睡眠锁
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="_1">实验原理</h1>
+<h3 id="1">1. 内存分配器</h3>
+<h4 id="11-xv6memory-allocator">1.1 xv6的内存分配器（Memory Allocator）简介</h4>
+<p>xv6对上层提供kalloc和kfree接口来管理物理内存。通过kalloc和kfree，屏蔽了对物理内存的管理，使得调用者只需要关心虚拟地址空间，在需要使用新内存空间的时候调用kalloc，在需要释放内存空间的时候调用kfree。</p>
+<p>物理内存分配器（allocator）定义在kernel/kalloc.c里。分配器的数据结构是由空闲物理页组成的链表。每个空闲页在列表里都是<code>struct run</code>。因为空闲页里什么都没有，所以空闲页的<code>run</code>数据结构就保存在空闲页自身里。这个空闲列表使用自旋锁进行保护。</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">run</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">run</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">spinlock</span> <span class="n">lock</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">run</span> <span class="o">*</span><span class="n">freelist</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">kmem</span><span class="p">;</span>
+</code></pre></div>
+
+<p>在系统启动时，<code>main()</code>函数（见kernel/main.c）调用<code>kinit()</code>来初始化分配器。<code>kinit</code>通过保存所有空闲页来初始化链表。<code>kinit</code>调用<code>freerange</code>来把空闲内存加到链表里，<code>freerange</code>是把每个空闲页逐一加到链表里来实现此功能的。</p>
+<p>由于PTE（页表条目）只能指向4K对齐的物理地址，所以<code>freerange</code>使用宏<code>PGROUNDUP</code>来确保空闲内存是4K对齐的。<code>freerange</code>将<code>end~PHYSTOP</code>之间的虚拟地址空间按照页面大小（单页面大小为4096Bytes，即4KB）切分并调用kfree()将页面从头部插入到链表<code>kmem.freelist</code>中进行管理。其中<code>PHYSTOP</code>是<code>KERNBASE+128M</code>，<code>KERNBASE</code>是<code>0x80000000L</code>，这里<code>end</code>并不是<code>KERNBASE</code>，而是《xv6 book》Figure 3.3中<code>Kernel data</code>之后可以用来分配的内存位置，也因此真正能分配出去的物理内存并没有128M。分配器刚开始是无内存可用的，通过对<code>kfree</code>的调用使得它拥有了可以管理的内存。</p>
+<p>关于链表的操作主要有两个：</p>
+<p>1、释放内存</p>
+<p>释放内存的函数是kfree(char *v)，首先将 <code>char *v</code> 开始的页物理内存初始化为1，这是为了让之前使用它的代码不能再读取到有效的内容，期望这些代码能尽早崩溃以发现问题所在。然后将这空闲页物理内存加到链表头。</p>
+<p><img alt="image-20201121160342435" src="../part2.assets/image-20201121160342435.png" /></p>
+<p>2、申请内存</p>
+<p><code>kalloc(void *)</code>用来分配内存，功能很简单，就是移除并返回空闲链表头的第一个元素，即给调用者分配1页物理内存。</p>
+<p><img alt="image-20201121160419011" src="../part2.assets/image-20201121160419011.png" /></p>
+<p>由于物理内存是在多进程之间共享的，所以不管是分配还是释放页面，每次操作kmem.freelist时都需要先申请kmem.lock，此后再进行内存页面的操作。</p>
+<h4 id="12-xv6lock">1.2 XV6中Lock的实现</h4>
+<p>我们再来看看xv6中锁是如何实现的。</p>
+<p>kalloc.c中调用acquire()和release()来获取锁和释放锁。首先需要知道的是锁的acquire（或者叫P）和release（V）的实现并不是一件简单的事情。我们先来看一个最naive的实现：</p>
+<div class="highlight"><pre><span></span><code><span class="mf">1.</span>  <span class="kt">void</span> <span class="n">acquire</span><span class="p">(</span><span class="k">struct</span> <span class="n">spinlock</span> <span class="o">*</span><span class="n">lk</span><span class="p">)</span> <span class="c1">// does not work!</span>
+<span class="mf">2.</span>  <span class="p">{</span>
+<span class="mf">3.</span>      <span class="k">for</span><span class="p">(;;)</span> <span class="p">{</span>
+<span class="mf">4.</span>          <span class="k">if</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="mf">5.</span>              <span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="mf">6.</span>              <span class="k">break</span><span class="p">;</span>
+<span class="mf">7.</span>          <span class="p">}</span>
+<span class="mf">8.</span>      <span class="p">}</span>
+<span class="mf">9.</span>  <span class="p">}</span>
+</code></pre></div>
+
+<p>这个代码非常容易理解，如果lk被锁上了，那就继续循环，如果lk未被锁上，那就给它加锁并退出。但这个实现是有缺陷的，让我们试想一下以下场景：</p>
+<pre><code>lk一开始没有被锁上，即lk-&gt;locked = 0;
+然后CPU0在跑进程A而CPU1在跑进程B，A和B同时对这个锁发起了acquire；
+我们所希望看到的是，锁被且只被A或B中的一个进程锁住，而另一个进程则继续在for中循环等待。
+但是，假设CPU0和CPU1同时执行到了第6行，那么会发生什么呢。
+没错，两个CPU都发现lk-&gt;locked == 0，因为另一个CPU还没有来得及改动lk-&gt;locked;
+这就会导致A和B同时获得锁，并从acquire中返回，这显然不是我们希望看到的。
+</code></pre>
+<p>那acquire到底是怎么实现的呢？这个仅凭软件是无法实现的，需要硬件参与辅助实现。</p>
+<p>在这里我们先介绍一条特殊的CPU指令amoswap。amoswap实现了在一条指令完成一次 load 和 store，更具体的说，就是可以将一个寄存器的值和某一内存地址的值做交换，将指定内存地址的值放入寄存器，同时将寄存器的值放入内存。此外，CPU还会保证某一CPU核在执行这一指令时，其他CPU核不能读或写对应的内存地址。</p>
+<pre><code>在C语言中使用这一汇编指令的语句调用是__sync_lock_test_and_set。
+这一函数接收两个参数，要写入的地址和要写入的值，返回值是写入地址原来的值。
+请仔细比较amoswap指令和__sync_lock_test_and_set行为上的相似之处，
+确保你已经大致知道__sync_lock_test_and_set是如何使用amoswap实现功能。
+</code></pre>
+<p>了解了__sync_lock_test_and_set之后，我们在回到acquire的问题上来。先看看xv6中是如何实现acquire的。</p>
+<div class="highlight"><pre><span></span><code><span class="mf">1.</span>    <span class="c1">// Acquire the lock.</span>
+<span class="mf">2.</span>    <span class="c1">// Loops (spins) until the lock is acquired.</span>
+<span class="mf">3.</span>    <span class="kt">void</span>
+<span class="mf">4.</span>    <span class="n">acquire</span><span class="p">(</span><span class="k">struct</span> <span class="n">spinlock</span> <span class="o">*</span><span class="n">lk</span><span class="p">)</span>
+<span class="mf">5.</span>    <span class="p">{</span>
+<span class="mf">6.</span>        <span class="n">push_off</span><span class="p">();</span> <span class="c1">// disable interrupts to avoid deadlock.</span>
+<span class="mf">7.</span>        <span class="k">if</span><span class="p">(</span><span class="n">holding</span><span class="p">(</span><span class="n">lk</span><span class="p">))</span>
+<span class="mf">8.</span>            <span class="n">panic</span><span class="p">(</span><span class="s">&quot;acquire&quot;</span><span class="p">);</span>
+
+<span class="mf">9.</span>        <span class="n">__sync_fetch_and_add</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="mf">10.</span>        <span class="c1">// On RISC-V, sync_lock_test_and_set turns into an atomic swap:</span>
+<span class="mf">11.</span>        <span class="c1">//   a5 = 1</span>
+<span class="mf">12.</span>        <span class="c1">//   s1 = &amp;lk-&gt;locked</span>
+<span class="mf">13.</span>        <span class="c1">//   amoswap.w.aq a5, a5, (s1)</span>
+<span class="mf">14.</span>        <span class="k">while</span><span class="p">(</span><span class="n">__sync_lock_test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="mf">15.</span>            <span class="n">__sync_fetch_and_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">nts</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="mf">16.</span>        <span class="p">}</span>
+
+<span class="mf">17.</span>        <span class="c1">// Tell the C compiler and the processor to not move loads or stores</span>
+<span class="mf">18.</span>        <span class="c1">// past this point, to ensure that the critical section&#39;s memory</span>
+<span class="mf">19.</span>        <span class="c1">// references happen after the lock is acquired.</span>
+<span class="mf">20.</span>        <span class="n">__sync_synchronize</span><span class="p">();</span>
+
+<span class="mf">21.</span>        <span class="c1">// Record info about lock acquisition for holding() and debugging.</span>
+<span class="mf">22.</span>        <span class="n">lk</span><span class="o">-&gt;</span><span class="n">cpu</span> <span class="o">=</span> <span class="n">mycpu</span><span class="p">();</span>
+<span class="mf">23.</span>    <span class="p">}</span>
+</code></pre></div>
+
+<p>我们需要注意的是14-16行的while循环。这里使用了__sync_lock_test_and_set使用amoswap，保证了对lk-&gt;locked读写的一致性。下面我们来分析以下具体的工作流程。</p>
+<pre><code>当lk-&gt;locked==0，即当前锁空闲时，__sync_lock_test_and_set在返回0的同时，
+会往lk-&gt;locked写入1，即上锁。整个过程因为由amoswap实现，所以不会被其他的CPU核所干扰。
+返回0之后退出while循环，符合我们的预期。
+
+当lk-&gt;locked==1，即当前锁被锁定时，__sync_lock_test_and_set在返回1的同时，
+往lk-&gt;locked里写入了1. 事实上在锁被锁定后我们不应该往lk-&gt;locked里写东西（当然，除了解锁的时候），
+但是因为锁本来就是1，再写入一个1相当于没有改变内容，所以也没差。
+同时，因为返回了1，我们知道当前锁被锁住了，所以会继续在while中循环。
+
+至于第15行代码所做的事，这个和锁的功能无关，但当然它有另外的作用。
+再次不做解释，有兴趣的同学可以自行研究。
+
+到这里对Lock的实现解释就结束了。
+
+在进行下一步的阅读前，强烈建议对上面的两个实现做比较和揣摩，
+直到你对为什么锁要使用__sync_lock_test_and_set有了清晰的认识。
+
+注：以上解释可在xv6的Locking章节中找到。
+</code></pre>
+<h4 id="13-kalloc">1.3 锁与kalloc</h4>
+<p>kalloc在什么情况下使用了锁？查阅kalloc.c代码可知，kalloc只在kalloc()和kfree()中使用了锁，那这两个用锁的情况有什么共性呢？没错，他们都是把对freelist的操作锁了起来。kfree()在往freelist里加节点前锁了一下，操作完之后解锁了。kalloc()在移除freelist第一个元素时也同样加了锁，操作完成再释放锁。所以对于内存分配器中需要锁保护的只有对freelist的操作。</p>
+<p>那为什么要在操作freelist的时候上锁呢？上锁必然是为了防止并行运行的时候出问题，如果我们能设想出一个场景（这个场景显然是并行情况下的）让没上锁的链表操作出问题，那就可以解释为什么要上锁了。</p>
+<pre><code>以kalloc()函数为例。假设第73和77行的锁操作被注释掉了，那么就可能有两个CPU，
+记为CPU0和CPU1，同时执行到第74行。然后，两个CPU就会从freelist中拿出同一个内存块，
+这就会导致两个进程共用一块内存，但对于进程来说它认为它得到的内存是独享的，
+这样A进程再往这块内存中写数据时，会把B之前写进去的数据破坏掉，这显然不是我们所希望的。
+所以kalloc()里从freelist中取内存块的操作需要锁，CPU0在取的时候CPU1陷入等待，知道CPU0把
+freelist更新完解锁后，CPU1再进去取，从而保证每个内存块只被一个进程取走。
+
+对kfree函数，请同学们自行想象一个没有锁会出现错误的场景，在此不再做讨论。
+</code></pre>
+<h4 id="14">1.4 锁对并行性的破坏</h4>
+<p>锁起到了保护作用，让一些关键的数据结构在并行环境下仍能保持一致性。但它的手段十分简单粗暴：当有人操作的时候，禁止其他人操作。这就会导致当很多CPU要操作一个数据结构（如kalloc中的freelist）时，需要排队，一个个来。一个CPU在干活，其他的CPU只能被阻塞住，这就导致了并行性的下降。那我们把锁删了，不阻塞，并行性不就上去了吗？确实，但这样功能就不能保证正确了。功能正确的重要性往往比性能高的重要性大得多。</p>
+<h4 id="15-kalloctest">1.5 测评程序kalloctest对锁的检测</h4>
+<p>测评程序会检查锁被阻塞的情况，还记得“XV6中Lock的实现”中提到的代码吗：</p>
+<p><div class="highlight"><pre><span></span><code><span class="mf">14.</span>        <span class="k">while</span><span class="p">(</span><span class="n">__sync_lock_test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">locked</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="mf">15.</span>            <span class="n">__sync_fetch_and_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lk</span><span class="o">-&gt;</span><span class="n">nts</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="mf">16.</span>        <span class="p">}</span>
+</code></pre></div>
+每当执行一次__sync_lock_test_and_set而返回值为1（即锁已被其他进程锁上），test-and-sets的值就会+1，而测评程序会检查test-and-sets的值。当这个值接近0时，才能通过测试。所以这次实验中需要做的就是减少进程中的锁冲突，尽量让进程在获取锁时，锁的状态都是未被锁上的。</p>
+<h3 id="2">2. 磁盘缓存</h3>
+<h3 id="21-xv6-buffer-cache">2.1 xv6 Buffer Cache简介</h3>
+<p>在xv6文件系统中，Buffer Cache（也称为bcache）担任了一个磁盘与内存文件系统交互的中间层。由于对磁盘的读取是非常慢的，而内存相对速度则要快得多，因此将最近经常访问的磁盘缓存在内存里是很有益处的（此时内存起到cache的作用）。Buffer Cache其实就是提供对磁盘文件的缓存，当修改完毕后写回磁盘。</p>
+<p>xv6的磁盘缓存模块主要提供了以下功能：</p>
+<ol>
+<li>同步访问磁盘块以确保内存里每个块只有一份复制，且每次只有一个内核线程可以使用那份复制。</li>
+<li>缓存常用块使得不必每次都从硬盘上读取它们。</li>
+</ol>
+<p>数据结构bcache（见kernel/bio.c）维护了一个由静态数组struct buf buf[NBUF]组成的双向链表，它以块为单位，每次读入或写出一个磁盘快，放到一个内存缓存块中（bcache.buf），同时自旋锁bcache.lock用于用户互斥访问。所有对缓存块的访问都是通过bcache.head引用链表来实现的，而不是buf数组。</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">spinlock</span> <span class="n">lock</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">buf</span> <span class="n">buf</span><span class="p">[</span><span class="n">NBUF</span><span class="p">];</span>
+
+  <span class="c1">// Linked list of all buffers, through prev/next.</span>
+  <span class="c1">// head.next is most recently used.</span>
+  <span class="k">struct</span> <span class="n">buf</span> <span class="n">head</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">bcache</span><span class="p">;</span>
+</code></pre></div>
+
+<p>每个缓存块都由三个部分组成，其中data字段标示了它的内容，指针字段（*prev，*next）用于组成链表，数值字段用于标示它的属性，如，字段valid的意思是缓存区包含了一个块的复制（即该buffer包含对应磁盘块的数据），字段disk的意思是缓存区的内容已经被提交到了磁盘，字段dev是设备号，字段blockno是缓存数据块号，字段refcnt是被引用次数，lock是睡眠锁。</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">buf</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">valid</span><span class="p">;</span>   <span class="c1">// has data been read from disk?</span>
+  <span class="kt">int</span> <span class="n">disk</span><span class="p">;</span>    <span class="c1">// does disk &quot;own&quot; buf?</span>
+  <span class="n">uint</span> <span class="n">dev</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">blockno</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">sleeplock</span> <span class="n">lock</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">refcnt</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">buf</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span> <span class="c1">// LRU cache list</span>
+  <span class="k">struct</span> <span class="n">buf</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+  <span class="n">uchar</span> <span class="n">data</span><span class="p">[</span><span class="n">BSIZE</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>对bcache的操作如下：</p>
+<ul>
+<li>在系统启动时，<code>main()</code>函数（见kernel/main.c）调用<code>binit()</code>来初始化缓存，随即调用initlock()初始化bcache.lock，然后循环遍历buf数组，采用头插法逐个链接到bcache.head后面。</li>
+<li>上层文件系统读磁盘时，调用bread()，随即调用bget()检查请求的磁盘块是否在缓存中，如果命中，返回缓存命令结果。如果未命中，转到底层的<code>virtio_disk_rw()</code>函数先此磁盘块从磁盘加载进缓存中，再返回此磁盘块。</li>
+<li>
+<p>上层文件写磁盘时，调用bwrite()，随即调用<code>virtio_disk_rw()</code>函数直接将缓存中的数据写入磁盘。</p>
+</li>
+<li>
+<p>上层文件系统可通过调用brelse()释放一块不再使用的缓存块。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>磁盘层在virtio_disk.c，实际上就是硬盘驱动。
+
+缓冲区缓存层用到的接口是virtio_disc_rw()
+
+- 作用：对磁盘进行读或写
+- *b : 缓冲区的指针
+- write : 1把缓冲区的内容写入到磁盘，0把磁盘的内容读取到缓冲区
+</code></pre></div>
+
+<h4 id="22-bio">2.2 锁与bio</h4>
+<p>在bio.c中，一共使用两种类型的锁：自旋锁spinlock（bcache.lock）和睡眠锁sleeplock（b.lock）。</p>
+<h5 id="221"><strong>2.2.1 自旋锁</strong></h5>
+<p>bcache.lock用于表示当前访问的bcache缓存块数据结构的是否被锁住。 当bcache.lock为0时表示为锁住，能够访问当前数据结构bcache，如果为1，即暂时无法获得锁，则不断循环、自旋、等待锁重新可用。</p>
+<p>bget()在操作bcache数据结构（修改refcnt、dev、blockno、valid）时，需要获取到自旋锁 bcache.lock，操作完成后再释放该锁。</p>
+<p>brelse()需要获取到自旋锁 bcache.lock，才能将refcnt（引用计数）减1，且只有在refcnt为0时，将该数据缓存块插入到bcache.head链表后面，操作完成后再释放该锁。</p>
+<p>bpin()和bunpin()获取到锁后，才能修改refcnt，操作完成后再释放该锁。</p>
+<h5 id="222"><strong>2.2.2 睡眠锁</strong></h5>
+<p>b.lock用于表示bcache缓存块数据结构中的当前缓存数据块buf是否被锁住，当b.lock为1时，则调用sleep()睡眠等待锁重新可用，为0则表示锁已经被释放。睡眠锁的三个接口函数如下：</p>
+<ul>
+<li>acquiresleep()：查询b.lock是否被锁，如果被锁了，就睡眠，让出CPU，直到wakeup()唤醒后，获取到锁，并将b.lock置1。</li>
+<li>releasesleep()：释放锁，并调用wakeup()</li>
+<li>holdingsleep()：返回锁的状态（1：锁住或0：未锁）</li>
+</ul>
+<p>bget()在获取到缓存块（命中的缓存块，或者，未命中时通过LRU算法替换出来缓存中的缓存块）后，调用acquiresleep()获取睡眠锁。</p>
+<p>bwrite()在写入到磁盘之前，先调用holdingsleep()查询是否已经获取到该睡眠锁，确保有带锁而入。</p>
+<p>brelse()也先调用holdingsleep()查询是否已经获取到该睡眠锁，确保有带锁后，才调用releasesleep()释放该锁。</p>
+<div class="highlight"><pre><span></span><code>自旋锁和睡眠锁的区别
+
+Spinlock
+1)  在短时间内进行轻量级加锁；                          
+2)  获取过程一直进行忙循环—旋转—等待锁重新可用（占用CPU时间长）；
+3)  xv6要求在持有spinlock期间，中断不允许发生。
+
+sleep-lock
+1)  适合长时间持有；
+2)  获取锁期间可以让出CPU；
+3)  持有Sleep-lock期间允许中断发生，但不允许在中断程序中使用。
+</code></pre></div>
+
+<p>【参考资料】</p>
+<p>[1] xv6 book, Chapter 3 Page tables,  3.2 Kernel address space</p>
+<p>[2] xv6 book, Chapter 5 Locking</p>
+<p>[3] xv6 book, Chapter 7 File system</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../part1/" title="实验概述" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验概述
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../part3/" title="实验步骤" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                实验步骤
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

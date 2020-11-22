@@ -194,6 +194,19 @@
   
 
       
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab3/part1/" class="md-tabs__link">
+          Lab3：锁机制的应用
+        </a>
+      
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -569,6 +582,84 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Lab3：锁机制的应用
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：锁机制的应用" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab3：锁机制的应用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -764,7 +855,7 @@
 <h4 id="24-shell">2.4 使用shell命令时发生了什么呢？</h4>
 <p>我们平时使用shell命令时，产生的子进程方式大体有以下两种方式：</p>
 <p>第一种：<strong>只使用fork()函数</strong> ，子进程几乎时当前进程的一个拷贝，父进程中的函数、全局变量、别名以及环境变量在子进程中仍然有效。注意：子进程只是父进程的拷贝，两者间并不共享。（这种方法也称为 <strong>子shell</strong> ）</p>
-<p>第二种：<strong>使用了fork()后，又使用了exec()函数</strong> ，这样新建子进程只留下了进程ID，这个子进程的i地址空间代码和数据都被新程序的代码和数据刷新替换。（这种方法也称为 <strong>子进程</strong> ）</p>
+<p>第二种：<strong>使用了fork()后，又使用了exec()函数</strong> ，这样新建子进程只留下了进程ID，这个子进程的地址空间代码和数据都被新程序的代码和数据刷新替换。（这种方法称为 <strong>子进程</strong> ）</p>
 <h4 id="25-xv6">2.5  xv6进程控制相关接口</h4>
 <p>1)    创建进程</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">fork</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>  <span class="cm">/*返回进程的pid, 一次调用，两次返回*/</span>
