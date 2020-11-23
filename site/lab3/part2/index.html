@@ -811,7 +811,7 @@
 </code></pre></div>
 
 <p>在系统启动时，<code>main()</code>函数（见kernel/main.c）调用<code>kinit()</code>来初始化分配器。<code>kinit</code>通过保存所有空闲页来初始化链表。<code>kinit</code>调用<code>freerange</code>来把空闲内存加到链表里，<code>freerange</code>是把每个空闲页逐一加到链表里来实现此功能的。</p>
-<p>由于PTE（页表条目）只能指向4K对齐的物理地址，所以<code>freerange</code>使用宏<code>PGROUNDUP</code>来确保空闲内存是4K对齐的。<code>freerange</code>将<code>end~PHYSTOP</code>之间的虚拟地址空间按照页面大小（单页面大小为4096Bytes，即4KB）切分并调用kfree()将页面从头部插入到链表<code>kmem.freelist</code>中进行管理。其中<code>PHYSTOP</code>是<code>KERNBASE+128M</code>，<code>KERNBASE</code>是<code>0x80000000L</code>，这里<code>end</code>并不是<code>KERNBASE</code>，而是《xv6 book》Figure 3.3中<code>Kernel data</code>之后可以用来分配的内存位置，也因此真正能分配出去的物理内存并没有128M。分配器刚开始是无内存可用的，通过对<code>kfree</code>的调用使得它拥有了可以管理的内存。</p>
+<p>由于PTE（页表条目）只能指向4K对齐的物理地址，所以<code>freerange</code>使用宏<code>PGROUNDUP</code>来确保空闲内存是4K对齐的。<code>freerange</code>将<code>end~PHYSTOP</code>之间的地址空间按照页面大小（单页面大小为4096Bytes，即4KB）切分并调用kfree()将页面从头部插入到链表<code>kmem.freelist</code>中进行管理。其中<code>PHYSTOP</code>是<code>KERNBASE+128M</code>，<code>KERNBASE</code>是<code>0x80000000L</code>，这里<code>end</code>并不是<code>KERNBASE</code>，而是《xv6 book》Figure 3.3中<code>Kernel data</code>之后可以用来分配的内存位置，也因此真正能分配出去的物理内存并没有128M。分配器刚开始是无内存可用的，通过对<code>kfree</code>的调用使得它拥有了可以管理的内存。</p>
 <p>关于链表的操作主要有两个：</p>
 <p>1、释放内存</p>
 <p>释放内存的函数是kfree(char *v)，首先将 <code>char *v</code> 开始的页物理内存初始化为1，这是为了让之前使用它的代码不能再读取到有效的内容，期望这些代码能尽早崩溃以发现问题所在。然后将这空闲页物理内存加到链表头。</p>
@@ -928,7 +928,7 @@ freelist更新完解锁后，CPU1再进去取，从而保证每个内存块只�
 <li>同步访问磁盘块以确保内存里每个块只有一份复制，且每次只有一个内核线程可以使用那份复制。</li>
 <li>缓存常用块使得不必每次都从硬盘上读取它们。</li>
 </ol>
-<p>数据结构bcache（见kernel/bio.c）维护了一个由静态数组struct buf buf[NBUF]组成的双向链表，它以块为单位，每次读入或写出一个磁盘快，放到一个内存缓存块中（bcache.buf），同时自旋锁bcache.lock用于用户互斥访问。所有对缓存块的访问都是通过bcache.head引用链表来实现的，而不是buf数组。</p>
+<p>数据结构bcache（见kernel/bio.c）维护了一个由静态数组struct buf buf[NBUF]组成的双向链表，它以块为单位，每次读入或写出一个磁盘块，放到一个内存缓存块中（bcache.buf），同时自旋锁bcache.lock用于用户互斥访问。所有对缓存块的访问都是通过bcache.head引用链表来实现的，而不是buf数组。</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="p">{</span>
   <span class="k">struct</span> <span class="n">spinlock</span> <span class="n">lock</span><span class="p">;</span>
   <span class="k">struct</span> <span class="n">buf</span> <span class="n">buf</span><span class="p">[</span><span class="n">NBUF</span><span class="p">];</span>

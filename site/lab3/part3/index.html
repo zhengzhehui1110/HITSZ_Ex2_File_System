@@ -682,8 +682,9 @@
 </code></pre></div>
 
 <p><strong>Step 4</strong> ：修改bget()和brelse()使得查找和释放缓存中的不同块时，锁之间的冲突更少。</p>
-<p><strong>Step 5</strong> ：修改bpin()和bunpin()增加或减少refcnt之前获取对应数据缓存块的锁，操作完成之后再释放锁。</p>
-<p><strong>Step 6</strong> ：用make grade命令，测试buffer cache是否通过。</p>
+<p><strong>Step 5</strong> ：也可使用时间戳方案来修改修改bget()和brelse()，使得锁之间的冲突更少。（参考实验概述--3.2.1 关于测评程序bcachetest）。</p>
+<p><strong>Step 6</strong> ：修改bpin()和bunpin()增加或减少refcnt之前获取对应数据缓存块的锁，操作完成之后再释放锁。</p>
+<p><strong>Step 7</strong> ：用make grade命令，测试buffer cache是否通过。</p>
                 
               
               
