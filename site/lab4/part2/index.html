@@ -1051,7 +1051,7 @@ struct sz_info中。</p>
 <li>初始化各层空闲链表</li>
 </ol>
 <p>初始化的内存布局如下:</p>
-<p><img alt="buddy" src="../part2.assets/buddy.png" /></p>
+<p><img alt="buddy" src="../part2.assets/buddy-1606655466502.png" /></p>
 <p>其中，标记元数据、尾部区域以及填充空闲列表对应bd_init()如下代码：</p>
 <div class="highlight"><pre><span></span><code>  <span class="c1">// 标记元数据</span>
   <span class="c1">// done allocating; mark the memory range [base, p) as allocated, so</span>
