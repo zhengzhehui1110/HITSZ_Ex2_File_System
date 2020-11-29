@@ -990,18 +990,22 @@ size 1中第1个内存块即为最后被分配出去的M1-1</p>
 <p><img alt="alt buddy alloctor ideal free 20" src="../part2.assets/free_1.svg" /></p>
 <p>图5 释放20B后</p>
 <p>此时再释放之前请求40B时分配的内存块，过程如下：</p>
-<p>（1）从第1层向上找到释放地址对应的split为1的块：
-- 所给地址在size 1层对应块为第3块（M1-3），该块split为0，查找上一层
-- 所给地址在size 2层对应块为第2块（M2-2），该块split为0，查找上一层
-- 所给地址在size 3层对应块为第1块（M3-1），该块split为1，为要查找的块</p>
+<p>（1）从第1层向上找到释放地址对应的split为1的块：</p>
+<ul>
+<li>所给地址在size 1层对应块为第3块（M1-3），该块split为0，查找上一层</li>
+<li>所给地址在size 2层对应块为第2块（M2-2），该块split为0，查找上一层</li>
+<li>所给地址在size 3层对应块为第1块（M3-1），该块split为1，为要查找的块</li>
+</ul>
 <p>（2）将上一步中找到的块的下一层中与该地址对应的块的alloc记为0：</p>
 <ul>
 <li>所给地址在size 2层对应块为第2块（M2-2），将M2-2的alloc记为0</li>
 </ul>
-<p>（3）合并空闲块直到不可合并
-- 上一步的块为M2-2，其buddy为M2-1，M2-1 alloc为0，需要进行合并。将M2-1从size 2的空闲链表中取出，将M2-1，M2-2对应的大块M3-1的alloc和split标记为0
-- M3-1 buddy 为 M3-2，M3-2 alloc为0，需要进行合并。将M3-2从size 3的空闲链表中取出，将M3-1，M3-2对应的大块M4-1的alloc和split标记为0 
-- M4-1 没有buddy，合并停止，将M4-1加入size 4空闲链表。</p>
+<p>（3）合并空闲块直到不可合并</p>
+<ul>
+<li>上一步的块为M2-2，其buddy为M2-1，M2-1 alloc为0，需要进行合并。将M2-1从size 2的空闲链表中取出，将M2-1，M2-2对应的大块M3-1的alloc和split标记为0</li>
+<li>M3-1 buddy 为 M3-2，M3-2 alloc为0，需要进行合并。将M3-2从size 3的空闲链表中取出，将M3-1，M3-2对应的大块M4-1的alloc和split标记为0 </li>
+<li>M4-1 没有buddy，合并停止，将M4-1加入size 4空闲链表。</li>
+</ul>
 <p>完成上述释放过程后，内存块和空闲块链表状态回到图2的状态。</p>
 <h3 id="2-xv6-buddy-allocator">2 xv6 buddy allocator代码分析</h3>
 <h4 id="21">2.1  代码中的内存块和空闲链表</h4>
