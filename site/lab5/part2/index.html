@@ -1,0 +1,1443 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+    
+    
+      
+        <title>实验原理 - 操作系统（2020秋季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4007cdc.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            操作系统（2020秋季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实验原理
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        实验须知
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab1/part1/" class="md-tabs__link">
+          Lab1：xv6与Unix实用程序
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab2/part1/" class="md-tabs__link">
+          Lab2：实现一个简单的shell
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab3/part1/" class="md-tabs__link">
+          Lab3：锁机制的应用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../lab4/part1/" class="md-tabs__link">
+          Lab4：内存管理之伙伴系统
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../part1/" class="md-tabs__link md-tabs__link--active">
+          Lab5：简单文件系统的设计与实现
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="操作系统（2020秋季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="操作系统（2020秋季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42V88h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zm0 96v12a6 6 0 01-6 6h-18v6a6 6 0 01-6 6h-42v-48h42a6 6 0 016 6v6h18a6 6 0 016 6zM30 376h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6zm0-96h42v48H30a6 6 0 01-6-6v-6H6a6 6 0 01-6-6v-12a6 6 0 016-6h18v-6a6 6 0 016-6z"/></svg>
+
+    </a>
+    操作系统（2020秋季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-lab/os_lab" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HITSZ-OS-Course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="实验须知" class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../env/" title="实验平台以及环境配置" class="md-nav__link">
+      实验平台以及环境配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux/" title="Linux开发环境基础知识" class="md-nav__link">
+      Linux开发环境基础知识
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../remote_env/" title="远程实验环境使用指南" class="md-nav__link">
+      远程实验环境使用指南
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lab1：xv6与Unix实用程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：xv6与Unix实用程序" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab1：xv6与Unix实用程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Lab2：实现一个简单的shell
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：实现一个简单的shell" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab2：实现一个简单的shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part3/" title="实验提示" class="md-nav__link">
+      实验提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Lab3：锁机制的应用
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：锁机制的应用" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab3：锁机制的应用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Lab4：内存管理之伙伴系统
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab4：内存管理之伙伴系统" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab4：内存管理之伙伴系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab4/part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab4/part2/" title="实验原理" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab4/part3/" title="实验步骤" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab4/part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      Lab5：简单文件系统的设计与实现
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lab5：简单文件系统的设计与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lab5：简单文件系统的设计与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part1/" title="实验概述" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实验原理
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="实验原理" class="md-nav__link md-nav__link--active">
+      实验原理
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ext2" class="md-nav__link">
+    1.  Ext2文件系统原理简介
+  </a>
+  
+    <nav class="md-nav" aria-label="1.  Ext2文件系统原理简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 文件系统是什么？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ext2" class="md-nav__link">
+    1.2 Ext2文件系统的构成
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Ext2文件系统的构成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1  整体布局
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    1.2.2  超级块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    1.2.3  文件的表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124" class="md-nav__link">
+    1.2.4  文件夹（目录）的表示
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 虚拟磁盘接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 磁盘缓存简介（选做内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 日志文件系统简介（选做内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-linuxc" class="md-nav__link">
+    5. Linux下的C语言编译
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Linux下的C语言编译">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 安装编译器和调试器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 选择合适的编译方式
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 选择合适的编译方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-makefile" class="md-nav__link">
+    5.2.1 命令行编译（Makefile）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-cmake" class="md-nav__link">
+    5.2.2 命令行编译（CMake）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-ide" class="md-nav__link">
+    5.2.3 IDE编译
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-gdb" class="md-nav__link">
+    5.3 GDB调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part3/" title="实验要求" class="md-nav__link">
+      实验要求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../part4/" title="提交文档" class="md-nav__link">
+      提交文档
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ext2" class="md-nav__link">
+    1.  Ext2文件系统原理简介
+  </a>
+  
+    <nav class="md-nav" aria-label="1.  Ext2文件系统原理简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 文件系统是什么？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-ext2" class="md-nav__link">
+    1.2 Ext2文件系统的构成
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Ext2文件系统的构成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1  整体布局
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    1.2.2  超级块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    1.2.3  文件的表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124" class="md-nav__link">
+    1.2.4  文件夹（目录）的表示
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 虚拟磁盘接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 磁盘缓存简介（选做内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 日志文件系统简介（选做内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-linuxc" class="md-nav__link">
+    5. Linux下的C语言编译
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Linux下的C语言编译">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 安装编译器和调试器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 选择合适的编译方式
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 选择合适的编译方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-makefile" class="md-nav__link">
+    5.2.1 命令行编译（Makefile）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-cmake" class="md-nav__link">
+    5.2.2 命令行编译（CMake）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-ide" class="md-nav__link">
+    5.2.3 IDE编译
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-gdb" class="md-nav__link">
+    5.3 GDB调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="_1">实验原理</h1>
+<h2 id="1-ext2">1.  Ext2文件系统原理简介</h2>
+<h3 id="11">1.1 文件系统是什么？</h3>
+<p>文件系统时操作系统用于明确存储设备（磁盘）或分区上的文件的方法和数据结构；即在存储设备上组织文件的方法。简单地说文件就是在磁盘上组织文件的方法。</p>
+<p>文件系统主要作用：</p>
+<p>（1）管理和调度文件的存储空间，提供文件的逻辑结构、物理结构和存储方法;</p>
+<p>（2）实现文件从标识到实际地址的映射，实现文件的控制操作和存取操作，提高磁盘查找数据的效率；</p>
+<p>（3）实现文件信息的共享并提供可靠的文件保密和保护措施，提供文件的安全措施。</p>
+<p>（4）优化磁盘空间利用率；</p>
+<p>目前在各种操作系统中存在着各种各样的文件系统，在Windows平台主流有：FAT、FAT16、FAT32、NTFS等；在Unix平台主流的有：Ext2、Ext3、Ext4等。这些文件系统在管理磁盘时都有各自的一套策略和方法，随之也带来不同的优缺点。Ext2是GNU/Linux系统中标准的文件系统，其特点是存取文件的性能较好，对于中小型的文件更显示其优势。本实验以Ext2为模板，实现一个简单的文件系统。</p>
+<h3 id="12-ext2">1.2 Ext2文件系统的构成</h3>
+<p>一个物理磁盘可以划分为多个磁盘分区，每个磁盘分区可以从逻辑上看成是从0开始编号的大量扇区，各自可以格式化程不同类型的文件系统（如Ext2、NTFS等）。如果格式化成Ext2文件系统，则其内部按照Ext2的规范，将磁盘盘块组织成超级块、组描述符和位图、索引节点、目录等管理数据，放在分区前端称为元数据区，剩余空间用于保存文件数据。</p>
+<h4 id="121">1.2.1  整体布局</h4>
+<p>Ext2文件系统将盘块分成两大类：保存元数据（管理数据）的元数据盘块，以及存放文件内容数据的数据盘块。本实验中，为了降低实验难度，简化了元数据区的结构（由超级块和inode数组构成）。简化后的Ext2文件系统的基本布局如下所示：</p>
+<p><img alt="placement" src="../part2.assets/placement.svg" /></p>
+<p>系统主要包含以下三个部分：</p>
+<ol>
+<li><strong>superblock</strong> ：超级块，包含整个系统的总体信息</li>
+<li><strong>inode</strong> ：记录着文件的元数据，每个文件都与一个inode对应，但一个inode可能对应多个文件（硬链接）。在
+   本实验中可以认为一个inode对应一个文件。</li>
+<li><strong>数据块</strong> ：记录文件内容</li>
+</ol>
+<h4 id="122">1.2.2  超级块</h4>
+<p>超级块是文件系统的起点系统，记录了文件系统全局性的一些信息。下面给出简化的超级块结构体示例：</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">super_block</span> <span class="p">{</span>
+    <span class="kt">int32_t</span> <span class="n">magic_num</span><span class="p">;</span>                  <span class="c1">// 幻数</span>
+    <span class="kt">int32_t</span> <span class="n">free_block_count</span><span class="p">;</span>           <span class="c1">// 空闲数据块数</span>
+    <span class="kt">int32_t</span> <span class="n">free_inode_count</span><span class="p">;</span>           <span class="c1">// 空闲inode数</span>
+    <span class="kt">int32_t</span> <span class="n">dir_inode_count</span><span class="p">;</span>            <span class="c1">// 目录inode数</span>
+    <span class="kt">uint32_t</span> <span class="n">block_map</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>            <span class="c1">// 数据块占用位图</span>
+    <span class="kt">uint32_t</span> <span class="n">inode_map</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>             <span class="c1">// inode占用位图</span>
+<span class="p">}</span> <span class="n">sp_block</span><span class="p">;</span>
+</code></pre></div>
+
+<p>其中，幻数用于识别文件系统。比如说，如果实现的文件系统幻数为0xdec0de，那么如果读到的幻数不等于0xdec0de，则表示当前磁盘中无系统，系统损坏，或者是其他不识别的文件系统。</p>
+<p>free_block_count，空闲数据块数</p>
+<p>free_inode_count，空闲索引节点数据</p>
+<p>dir_inode_count，指的是被占用的目录inode数</p>
+<p>block_map，数据块位图，记录着数据块的使用情况，其用1个比特记录某一个数据块是否被占用。示例中共可表示128 * 32=4096个数据块的占用情况。</p>
+<p>inode_map，索引节点盘块位图，记录着索引节点表的使用情况，也用1个比特记录某一个索引节点是否被使用。示例中共可表示32 * 32 = 1024个inode索引节点的占用情况。</p>
+<h4 id="123">1.2.3  文件的表示</h4>
+<p>对于每个文件，都会有一个inode结构体包含其元数据（文件类型，文件大小）等。以下是一个简化的inode示例。</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">inode</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">size</span><span class="p">;</span>              <span class="c1">// 文件大小</span>
+    <span class="kt">uint16_t</span> <span class="n">file_type</span><span class="p">;</span>         <span class="c1">// 文件类型（文件/文件夹）</span>
+    <span class="kt">uint16_t</span> <span class="n">link</span><span class="p">;</span>              <span class="c1">// 连接数</span>
+    <span class="kt">uint32_t</span> <span class="n">block_point</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>    <span class="c1">// 数据块指针</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>文件的内容并不会保存在inode里，而是保存在另外的数据块中。inode里保存了相应数据块的索引值。读写文件时则通过索引值找到相应的数据块来读写。</p>
+<p><img alt="alt file inode" src="../part2.assets/file.svg" /></p>
+<p>每个索引节点内包含block_point[]数组用于记录文件的数据块所在位置（编号）。Ext2文件系统中的每个数据块大小为1KiB（即为两个512B的物理磁盘块），那么采用直接索引方式，一个文件不能超过 6个（数据块） *  1KB（数据块大小）= 6KB大小；当文件超过6KB时，需要用一级间接索引，如果文件继续增大，就需要二级或二级以上间接索引。（ <strong>注：间接索引属于选做功能</strong> ）</p>
+<p>link：文件链接数（ <strong>注：文件软链接与硬链接属于选做功能</strong> ）</p>
+<h4 id="124">1.2.4  文件夹（目录）的表示</h4>
+<p>文件夹（目录）用于将整个文件系统的文件行程按路径名访问的树形组织结构排列。Ext2文件系统并没有单独形成用于目录数据的数据块，而是将目录与普通文件一样存放在数据块中。也就是说，文件夹（目录）在Ext2中的存储方式与文件一致。不同之处在于目录在数据块中的内容由文件系统直接管理，用户并不能像写普通文件一样直接使用编辑器写目录数据块中的内容。</p>
+<p>目录在存储管理上和普通文件相同——也是通过索引节点来管理目录项数据的，只不过目录数据块内容含有多条目录项数据结构，即目录数据块中的内容是目录项的数组，通过上一级目录项将其类型标识为“目录”以区分普通文件。</p>
+<p>根目录有固定的起点（例如Ext2文件系统根目录的索引号为2），因此根目录文件就不需要上级目录来定位了。</p>
+<p>下面是简化的目录项结构体示例：</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">dir_item</span> <span class="p">{</span>               <span class="c1">// 目录项一个更常见的叫法是 dirent(directory entry)</span>
+    <span class="kt">uint32_t</span> <span class="n">inode_id</span><span class="p">;</span>          <span class="c1">// 当前目录项表示的文件/目录的对应inode</span>
+    <span class="kt">uint16_t</span> <span class="n">valid</span><span class="p">;</span>             <span class="c1">// 当前目录项是否有效 </span>
+    <span class="kt">uint8_t</span> <span class="n">type</span><span class="p">;</span>               <span class="c1">// 当前目录项类型（文件/目录）</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">121</span><span class="p">];</span>             <span class="c1">// 目录项表示的文件/目录的文件名/目录名</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>对于目录中的每一个目录项都对应了当前目录下的一个文件/目录。具体表示方式见下图：</p>
+<p><img alt="alt dir content" src="../part2.assets/dir.svg" /></p>
+<p>图中 / 目录下第二个名为foo的目录项valid被标记为0，表示这一文件已被删除。当然也可以使用其他的删除方式，比如用后面的目录项覆盖被删除的目录项。</p>
+<p>图中 /demo/ 目录为空目录，没有任何数据块。但事实上，空的目录中也应该有两个目录项，"."和".."，分别表示当前目录和上级目录。 <strong>本实验中不要求实现这两个目录项。</strong> </p>
+<h2 id="2">2 虚拟磁盘接口</h2>
+<p>本次实验提供了虚拟磁盘接口，头文件中提供了完备的注释。该接口底层实现简单，如果不想看大段的注释，直接看实现代码也未尝不可。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// The size of one single disk block in bytes</span>
+<span class="cp">#define DEVICE_BLOCK_SIZE 512</span>
+
+<span class="c1">// Total disk size in bytes, 4 * 1024 * 1024 bytes (4 MiB) in total</span>
+<span class="kt">int</span> <span class="nf">get_disk_size</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Open the virtual disk.</span>
+<span class="cm"> * @return returns 0 on success, -1 otherwise. </span>
+<span class="cm"> * @note This function will open a file named &quot;disk&quot; as a vritual disk</span>
+<span class="cm"> * If the file is not found, it will try to create the file, and fill it with zeros of 4 MiB.</span>
+<span class="cm"> * This function must be called before any calls to disk_read_block() and disk_write_block().</span>
+<span class="cm"> * This function will fail if the disk is already opened.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">open_disk</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Close the virtual disk.</span>
+<span class="cm"> * @return returns 0 on success, -1 otherwise. </span>
+<span class="cm"> * @note This function will close the virtual disk file.</span>
+<span class="cm"> * After calling this function, all calls to disk_read_block() and disk_write_block() will fail</span>
+<span class="cm"> * util open_disk() is called again.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">close_disk</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Fill buf with the content of the block_num-th block.</span>
+<span class="cm"> * @param block_num The index of the block to be read.</span>
+<span class="cm"> * @param buf       The pointer to the space where the function shall place the block content.</span>
+<span class="cm"> * @return returns 0 on success, -1 otherwise.</span>
+<span class="cm"> * @note The space of buf should be no less than DEVICE_BLOCK_SIZE.</span>
+<span class="cm"> * Make sure open_disk() is called before calling this function.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">disk_read_block</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">block_num</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Write content of buf to the block_num-th block. </span>
+<span class="cm"> * @param block_num The index of the block to be written.</span>
+<span class="cm"> * @param buf       The pointer to the space where the data to be written to disk is placed.</span>
+<span class="cm"> * @return returns 0 on success, -1 otherwise.</span>
+<span class="cm"> * @note Make sure open_disk() is called before calling this function.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">disk_write_block</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">block_num</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">);</span>
+</code></pre></div>
+
+<p>该接口模拟了对一个容量为4MiB的磁盘的操作。其中需要注意的是它保留了磁盘的访问特性，即按块访问，每次读写都需要读写完整的 512B 的磁盘块。这将引起一些很麻烦的情况，比如说要更新某个磁盘块中的某个inode时，需要先把整个磁盘块读出来，更新相应inode，再写回去，而不是直接往磁盘里写（除非一个inode比一个磁盘块大）。</p>
+<h2 id="3">3. 磁盘缓存简介（选做内容）</h2>
+<p>磁盘的访问速度远小于内存的访问速度，而现实中磁盘的容量也远大于内存，所以为了提速把整个磁盘内容读到内存中是不现实的。但是，我们还是有一些手段提高对磁盘的访问速度。根据局部性原理，最近被访问过的空间接下来也很可能被访问到，所以我们可以做一些缓存块，把最近最常被访问的数据放入缓存块中。如何管理缓存块，采取怎样的替换策略，以及在什么时机下写回，如何保证一致性，这些都是磁盘缓存需要考虑的问题。</p>
+<h2 id="4">4. 日志文件系统简介（选做内容）</h2>
+<p>日志机制是提高文件系统鲁棒性的一个重要机制。我们知道，创建文件等操作往往需要写不止一次磁盘，如：</p>
+<ul>
+<li>写文件inode</li>
+<li>写目录项</li>
+<li>写超级块</li>
+</ul>
+<p>如果在写完目录项但没开始写超级块时发生了内核崩溃或者停电等因素导致宕机，那么第一步被分配出去的inode就无法被记录为已分配，重启系统后文件系统有可能把这一inode分配给其他文件。</p>
+<p>为了保证整个过程的原子性，我们可以加入日志机制。在磁盘中划出一块区域记为日志区。一开始不把更新后的数据写入数据区，而是把日志区状态记为记录中，并把更改写入日志区。写入完成后，把日志区状态改为写入中，并把日志区的更改更新到数据区。全部更新完成后，把日志区状态记为空闲。</p>
+<p>如果在记录时系统崩溃，在重启后会发现日志区状态为记录中。此时只需简单地丢弃日志内容，改状态为空闲，即可。这种情况下文件创建就好像从未发生过一样。</p>
+<p>如果在写入时系统崩溃，在重启后会发现日志区状态为写入中。此时日志区的更新信息是完整的，只是不知道崩溃前写到了哪一步。此时只要把日志区的信息全部重新写入到数据区，再把状态记为空闲，即可恢复被打断的操作。</p>
+<h2 id="5-linuxc">5. Linux下的C语言编译</h2>
+<h3 id="51">5.1 安装编译器和调试器</h3>
+<p>要在Linux下编译C语言程序，首先需要编译器gcc。
+使用以下命令检查是否已经安装gcc：</p>
+<div class="highlight"><pre><span></span><code>gcc --verion
+</code></pre></div>
+
+<p>如果输出类似（不一定完全一致）以下输出，则gcc已经安装好。</p>
+<div class="highlight"><pre><span></span><code>gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre></div>
+
+<p>未安装gcc则会出现如下错误：</p>
+<div class="highlight"><pre><span></span><code>gcc: command not found
+</code></pre></div>
+
+<p>如果没有安装，可使用以下命令（Ubuntu/Debian）安装gcc：</p>
+<div class="highlight"><pre><span></span><code>sudo apt install gcc
+</code></pre></div>
+
+<p>调试器gdb的检查和安装类似于gcc：
+检查：</p>
+<div class="highlight"><pre><span></span><code>gdb --version
+</code></pre></div>
+
+<p>安装：</p>
+<div class="highlight"><pre><span></span><code>sudo apt install gdb
+</code></pre></div>
+
+<h3 id="52">5.2 选择合适的编译方式</h3>
+<p>编译和调试方式有两种：</p>
+<ol>
+<li>使用IDE</li>
+<li>使用命令行</li>
+</ol>
+<p>其中IDE需要图形化的桌面系统，即只有虚拟机才能使用IDE。使用服务器的同学只能使用命令行编译。</p>
+<h4 id="521-makefile">5.2.1 命令行编译（Makefile）</h4>
+<p>文件的命令行下编译（不要加尖括号）：</p>
+<div class="highlight"><pre><span></span><code>gcc &lt;所有要编译的.c文件，注意用空格隔开&gt; -o &lt;输出的可执行文件的文件名&gt;
+// example：
+gcc shell.c disk.c -o shell
+</code></pre></div>
+
+<p>部分函数需要额外的链接库，如pthread_create()需要 -lpthread，但本实验中应该不需要额外的库。
+如果需要，可自行百度加上所需的库。</p>
+<p>也可以把命令行写成Makefile文件，通过make命令即可完成整个工程编译。</p>
+<p>以下给出一个Makefile的参考示例：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">all</span><span class="o">:</span> <span class="n">shell</span>  
+
+<span class="nf">hello</span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">disk</span>.<span class="n">o</span> <span class="n">shell</span>.<span class="n">o</span>  
+    gcc main.o disk.o shell.o -o shell  
+
+<span class="nf">main.o</span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span>  
+    gcc -c main.c  
+
+<span class="nf">disk.o</span><span class="o">:</span> <span class="n">disk</span>.<span class="n">c</span>  
+    gcc -c disk.c  
+
+<span class="nf">hello.o</span><span class="o">:</span> <span class="n">shell</span>.<span class="n">c</span>  
+    gcc -c shell.c  
+
+<span class="nf">clean</span><span class="o">:</span>  
+    rm -rf *o shell  
+</code></pre></div>
+
+<p>目标all只有依赖，没有系统命令。为了去执行正确，它必须满足所有的目标所依赖的。目标都回去搜索所有的依赖，然后去执行它。在例子中，我们看到了clean的目标，clean这个目标就是清除中间生成的.o文件和那些可执行文件。</p>
+<p>当然，也可以通过使用变量来改变编译的一些选项，上述Makefile例子的进一步简化如下：</p>
+<div class="highlight"><pre><span></span><code><span class="nv">cc</span> <span class="o">=</span> gcc
+<span class="nv">prom</span> <span class="o">=</span> shell
+<span class="nv">src</span> <span class="o">=</span> main.c disk.c shell.c
+
+<span class="nf">$(prom)</span><span class="o">:</span> <span class="k">$(</span><span class="nv">src</span><span class="k">)</span>
+    <span class="k">$(</span>cc<span class="k">)</span> -o <span class="k">$(</span>prom<span class="k">)</span> <span class="k">$(</span>src<span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>  
+    rm -rf *o shell     
+</code></pre></div>
+
+<p>如果我们只修改的.h头文件时，上述make就无法察觉到变化，所以有必要为头文件专门设置一个常量，并将其加入到依赖关系表中。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">cc</span> <span class="o">=</span> gcc
+<span class="nv">prom</span> <span class="o">=</span> shell
+<span class="nv">deps</span> <span class="o">=</span> shell.h
+<span class="nv">obj</span> <span class="o">=</span> main.o disk.o shell.o
+
+<span class="nf">$(prom)</span><span class="o">:</span> <span class="k">$(</span><span class="nv">obj</span><span class="k">)</span>
+    <span class="k">$(</span>cc<span class="k">)</span> -o <span class="k">$(</span>prom<span class="k">)</span> <span class="k">$(</span>obj<span class="k">)</span>
+
+<span class="nf">%.o</span><span class="o">:</span> %.<span class="n">c</span> <span class="k">$(</span><span class="nv">deps</span><span class="k">)</span>
+    <span class="k">$(</span>cc<span class="k">)</span> -c $&lt; -o <span class="nv">$@</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    rm -rf <span class="k">$(</span>obj<span class="k">)</span> <span class="k">$(</span>prom<span class="k">)</span>   
+</code></pre></div>
+
+<p>%.o:%.c，这是一个模式规则，表示所有的.o目标都依赖于与它同名的.c文件（当然还有deps中列出的头文件）。</p>
+<p>命令部分的&lt;代表%.c。$@代表的是当前语句的目标，即%.o。这样一来，make命令就会自动将所有的.c源文件编译成同名的.o文件。不用我们一项一项去指定了。整个代码自然简洁了许多。</p>
+<p>如果还想了解更多Makefile的和make的知识，请参考：</p>
+<p>跟我一起写Makefile:MakeFile介绍：</p>
+<p><a href="https://wiki.ubuntu.org.cn/跟我一起写Makefile:MakeFile介绍">https://wiki.ubuntu.org.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile:MakeFile%E4%BB%8B%E7%BB%8D</a></p>
+<p>Reading-Makefiles ：</p>
+<p><a href="http://www.gnu.org/software/make/manual/make.html#Reading-Makefiles">http://www.gnu.org/software/make/manual/make.html#Reading-Makefiles</a> </p>
+<h4 id="522-cmake">5.2.2 命令行编译（CMake）</h4>
+<p>对于一个大型工程，编写Makefile实在是件复杂的事情。有没有工具能自动生成Makefile呢？当然有啦，比较好用的就是Cmake工具了，它能够输出各种各样的makefile，从而给程序员减轻负担。</p>
+<p>在Linux平台下使用CMake生成Makefile并编译的流程如下：</p>
+<p>1、编写CMake配置文件CMakeLists.txt</p>
+<p>2、执行命令cmake PATH或者ccmake PATH生成Makefile。ccmake和cmake的区别在于前者提供了一个交互式的界面。</p>
+<p>3、使用make命令进行编译。</p>
+<p>以下是来自计算机网络实验net_lab中的CMakeLists.txt，给大家提供一个参考：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># CMake 最低版本号要求</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0.0</span><span class="p">)</span>
+<span class="c"># 项目信息</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">net</span> <span class="s">VERSION</span> <span class="s">0.1.0</span><span class="p">)</span>
+
+<span class="c"># 添加头文件</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="s">./include</span> <span class="s">./pcap</span><span class="p">)</span>
+<span class="c"># 查找当前目录下的所有源文件，并将名称保存到DIR_SRCS变量</span>
+<span class="nb">aux_source_directory</span><span class="p">(</span><span class="s">./src</span> <span class="s">DIR_SRCS</span><span class="p">)</span>
+<span class="c"># 指定生成目标</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">main</span> <span class="o">${</span><span class="nv">DIR_SRCS</span><span class="o">}</span><span class="p">)</span>
+<span class="c"># 添加链接库</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">main</span> <span class="s">pcap</span><span class="p">)</span>
+</code></pre></div>
+
+<p>如果要使用CMake工具，还需要安装依赖（ubuntu环境下）：</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install cmake make
+</code></pre></div>
+
+<p>和计算机网络实验一样，在写好CMakeLists.txt文件后，也可以使用VSCode CMake工具来编译，具体请参考《计算机网络实验指导书》附录A.3.3。</p>
+<h4 id="523-ide">5.2.3 IDE编译</h4>
+<p>Linux环境下也支持IDE编辑/编译器，比如CodeBlocks、Eclipse CDT、Netbeans等等。请同学自行搜索这些IDE的用法。</p>
+<h3 id="53-gdb">5.3 GDB调试</h3>
+<p>下面介绍如何使用 vscode 运行gdb（也可以参考《计算机网络实验指导书》附录A.3.3 如何进行编译和调试</p>
+<p><strong>Step1：</strong>  使用vscode打开代码所在文件夹。</p>
+<p><strong>Step2：</strong>  关闭所有打开的文件</p>
+<p><strong>Step3：</strong>  按下 <kdb>F5</kdb>，并选择C++(GDB/LLDB)
+<img alt="alt press F5" src="../part2.assets/pressF5.jpg" /></p>
+<p><strong>Step4：</strong>  将自动生成的launch.json中的 program 设成编译步骤中的&lt;输出的可执行文件的文件名&gt;
+<img alt="alt edit program" src="../part2.assets/edit_program.jpg" />
+如：</p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;program&quot;</span><span class="o">:</span><span class="s2">&quot;${workspaceFolder}/hello&quot;</span><span class="p">,</span>
+<span class="c1">// ${workspaceFolder} 表示当前vscode所打开的文件夹</span>
+</code></pre></div>
+
+<p><strong>Step5：</strong>  再次按下<kdb>F5</kdb>，开始调试
+<img alt="alt vscode gdb" src="../part2.assets/vscode_gdb.jpg" /></p>
+<p>上述步骤中对一个工程只需执行一遍，后续调试直接按下<kdb>F5</kdb>即可开始调试。需要注意的是按下<kdb>F5<kdb>并不会重新编译工程，调试前请不要忘记使用gcc命令/CMake编译程序。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../part1/" title="实验概述" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验概述
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../part3/" title="实验要求" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                实验要求
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
