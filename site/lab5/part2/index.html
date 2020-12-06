@@ -1338,7 +1338,14 @@ gcc shell.c disk.c -o shell
 <h4 id="523-ide">5.2.3 IDE编译</h4>
 <p>Linux环境下也支持IDE编辑/编译器，比如CodeBlocks、Eclipse CDT、Netbeans等等。请同学自行搜索这些IDE的用法。</p>
 <h3 id="53-gdb">5.3 GDB调试</h3>
-<p>下面介绍如何使用 vscode 运行gdb（也可以参考《计算机网络实验指导书》附录A.3.3 如何进行编译和调试</p>
+<p><strong>注意</strong> ：如果需要调试，使用 gcc 编译时需要加入调试选项 -g 加入调试符号，如下：</p>
+<div class="highlight"><pre><span></span><code>gcc -g &lt;所有要编译的.c文件，注意用空格隔开&gt; -o &lt;输出的可执行文件的文件名&gt;
+// example:
+gcc -g hello.c disk.c -o hello
+</code></pre></div>
+
+<p>gdb的命令行使用起来较为复杂，如果需要体验命令行版本的gdb，请自行百度用法。</p>
+<p>下面介绍如何使用 vscode 运行gdb（也可以参考《计算机网络实验指导书》附录A.3.3 如何进行编译和调试。</p>
 <p><strong>Step1：</strong>  使用vscode打开代码所在文件夹。</p>
 <p><strong>Step2：</strong>  关闭所有打开的文件</p>
 <p><strong>Step3：</strong>  按下 <kdb>F5</kdb>，并选择C++(GDB/LLDB)
