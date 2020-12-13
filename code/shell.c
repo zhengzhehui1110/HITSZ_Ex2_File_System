@@ -1,6 +1,8 @@
 #include "disk.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 char*
 gets(char *buf, int max)
@@ -13,8 +15,9 @@ gets(char *buf, int max)
     if(cc < 1)
       break;
     buf[i++] = c;
-    if(c == '\n' || c == '\r')
+    if(c == '\n' || c == '\r'){
       break;
+    }
   }
   buf[i] = '\0';
   return buf;
@@ -22,9 +25,10 @@ gets(char *buf, int max)
 
 
 int
-getcmd(char *buf, int nbuf)
+getcmd(char *buf, int nbuf) //read a command line
 {
-  printf("ext2 file sys $ ");
+  //printf("ext2 file sys $");
+  //putchar('$');
   memset(buf, 0, nbuf);
   gets(buf, nbuf);
   if(buf[0] == 0) // EOF
@@ -33,19 +37,74 @@ getcmd(char *buf, int nbuf)
 }
 
 
+void reset_disk(){  //reset file system
+  FILE* tmp = fopen("disk","w");//reset all data
+        for(int i = 0; i < get_disk_size(); i++){
+                fputc(0,tmp);
+        }
+        fclose(tmp);
+  char disk_buf[DEVICE_BLOCK_SIZE]; //disk_block buf
+  if(disk_read_block(0,disk_buf)==0){
+      sp_block *super_block_buf = (sp_block *)disk_buf; //super block struct
+      super_block_buf->magic_num = MAGIC_NUM; //write magic num
+      disk_write_block(0,disk_buf);  //reset super block
+      printf("reset finish!!\n");
+  }
+  else
+  {
+    printf("reset fail\n");
+    exit(0);
+  }
+  
+}
+
+
+void read_super(){  //read super block
+    char disk_buf[DEVICE_BLOCK_SIZE]; //disk_block buf
+    if(disk_read_block(0,disk_buf)==0){
+      sp_block *super_block_buf = (sp_block *)disk_buf;
+      printf("succesfully read super block\n");
+      if (super_block_buf->magic_num != MAGIC_NUM)
+      {
+        //magic num is broken
+        //you should reset the file system
+        printf("magic num is broken:%x,resetting file system...\n",super_block_buf->magic_num);
+        reset_disk();
+      }
+      disk_read_block(0,disk_buf);
+      super_block_buf = (sp_block *)disk_buf;
+      printf("magic num:%x\n",super_block_buf->magic_num);
+    }
+    else
+    {
+      printf("cannot read super block\n");
+      exit(0);
+    }
+}
+
+
 
 
 int main(int argc, char* argv[]){
-    static char buf[512]; //读入命令的缓冲区
-
-    if(open_disk()) printf("file open\n"); //打开磁盘
+    char buf[512]; //读入命令的缓冲区
+    
+    if(open_disk()==0) {
+      printf("disk open\n"); //打开磁盘
+    }
     else {
         printf("cannot open file\n");
         return 0;
     }
+    //read super block
+    read_super();
+    
+    
+
+    //shell
     while(getcmd(buf, sizeof(buf)) >= 0){
         if(buf[0] == 'l'&&buf[1] == 's'){
             //列出目录下的内容
+            printf("ls\n");
         }
         else if(buf[0] == 'm'&&buf[1] == 'k'&&
             buf[2] == 'd'&&buf[3] == 'i'&&
@@ -70,10 +129,9 @@ int main(int argc, char* argv[]){
         {
             printf("unknown command\n");
         }
-    
+        
     
     }
+    return 0;
     
-
-
 }

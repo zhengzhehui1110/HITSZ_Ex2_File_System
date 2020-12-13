@@ -1,9 +1,19 @@
 #ifndef DISK_H
 #define DISK_H
+#include <stdint.h>
 
 // The size of one single disk block in bytes
 #define DEVICE_BLOCK_SIZE 512
+#define MAGIC_NUM 0x11223355
 
+typedef struct super_block {
+    int32_t magic_num;                  // 幻数
+    int32_t free_block_count;           // 空闲数据块数
+    int32_t free_inode_count;           // 空闲inode数
+    int32_t dir_inode_count;            // 目录inode数
+    uint32_t block_map[128];            // 数据块占用位图
+    uint32_t inode_map[32];             // inode占用位图
+} sp_block;
 
 // Total disk size in bytes, 4 * 1024 * 1024 bytes (4 MiB) in total
 int get_disk_size();
@@ -53,5 +63,6 @@ int disk_read_block(unsigned int block_num, char* buf);
  * @note Make sure open_disk() is called before calling this function.
  */
 int disk_write_block(unsigned int block_num, char* buf);
+
 
 #endif 
