@@ -27,13 +27,39 @@ gets(char *buf, int max)
 int
 getcmd(char *buf, int nbuf) //read a command line
 {
-  //printf("ext2 file sys $");
+  printf("EXT2 FILE SYS$");
+  fflush(stdout);
   //putchar('$');
   memset(buf, 0, nbuf);
   gets(buf, nbuf);
   if(buf[0] == 0) // EOF
     return -1;
   return 0;
+}
+
+int read_data_block(unsigned int datablock_num, char* buf){ //read a data block
+    
+    char disk_block_buf[DEVICE_BLOCK_SIZE];  //one data block include two disk blocks
+    int flag = 0;
+    flag += disk_read_block(datablock_num*2,disk_block_buf); //read the first disk block
+    memcpy(buf,disk_block_buf,DEVICE_BLOCK_SIZE);
+    
+    flag += disk_read_block(datablock_num*2+1,disk_block_buf);//read the second disk block
+    memcpy(buf+DEVICE_BLOCK_SIZE,disk_block_buf,DEVICE_BLOCK_SIZE);
+    //printf("read: %x %x %x\n",disk_block_buf[0],disk_block_buf[1],disk_block_buf[2]);//test
+    //printf("%x %x %x\n",buf[0x200],buf[0x201],buf[0x202]);//test
+    return (flag==0)?0:-1; //if succeed return 0
+}
+
+int write_data_block(unsigned int datablock_num, char* buf){ //write a data block
+    char disk_block_buf[DEVICE_BLOCK_SIZE];
+    int flag = 0;
+    memcpy(disk_block_buf,buf,DEVICE_BLOCK_SIZE);  //divide data block into 2 part
+    flag += disk_write_block(datablock_num*2,disk_block_buf);//write the first disk block
+    memcpy(disk_block_buf,buf+DEVICE_BLOCK_SIZE,DEVICE_BLOCK_SIZE);
+    //printf("write: %x %x %x\n",disk_block_buf[0],disk_block_buf[1],disk_block_buf[2]);//test
+    flag += disk_write_block(datablock_num*2+1,disk_block_buf); //write the second disk block
+    return (flag==0)?0:-1; //if succeed return 0
 }
 
 
@@ -43,25 +69,37 @@ void reset_disk(){  //reset file system
                 fputc(0,tmp);
         }
         fclose(tmp);
-  char disk_buf[DEVICE_BLOCK_SIZE]; //disk_block buf
-  if(disk_read_block(0,disk_buf)==0){
+
+
+       
+
+    char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
+    memset(disk_buf,0,sizeof(disk_buf));
+    //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
+    if(read_data_block(0,disk_buf)==0){ //start reset super block
+      //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
       sp_block *super_block_buf = (sp_block *)disk_buf; //super block struct
       super_block_buf->magic_num = MAGIC_NUM; //write magic num
-      disk_write_block(0,disk_buf);  //reset super block
+      //TODO
+
+      
+      memset(super_block_buf->empty_map,0xffffffff,sizeof(super_block_buf->empty_map));
+      
+      write_data_block(0,disk_buf);  //reset super block
       printf("reset finish!!\n");
-  }
-  else
-  {
-    printf("reset fail\n");
-    exit(0);
-  }
+    }
+    else
+    {
+      printf("reset fail\n");
+      exit(0);
+    }
   
 }
 
 
 void read_super(){  //read super block
-    char disk_buf[DEVICE_BLOCK_SIZE]; //disk_block buf
-    if(disk_read_block(0,disk_buf)==0){
+    char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
+    if(read_data_block(0,disk_buf)==0){
       sp_block *super_block_buf = (sp_block *)disk_buf;
       printf("succesfully read super block\n");
       if (super_block_buf->magic_num != MAGIC_NUM)
@@ -71,7 +109,7 @@ void read_super(){  //read super block
         printf("magic num is broken:%x,resetting file system...\n",super_block_buf->magic_num);
         reset_disk();
       }
-      disk_read_block(0,disk_buf);
+      read_data_block(0,disk_buf);
       super_block_buf = (sp_block *)disk_buf;
       printf("magic num:%x\n",super_block_buf->magic_num);
     }
@@ -95,6 +133,11 @@ int main(int argc, char* argv[]){
         printf("cannot open file\n");
         return 0;
     }
+
+    
+
+
+
     //read super block
     read_super();
     
