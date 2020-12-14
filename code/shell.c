@@ -68,19 +68,18 @@ void reset_disk(){  //reset file system
     open_disk();
     create_disk();//reset all to zero
     char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
-    //memset(disk_buf,0,sizeof(disk_buf));
-    //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
     if(read_data_block(0,disk_buf)==0){ //start reset super block
-      //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
       sp_block *super_block_buf = (sp_block *)disk_buf; //super block struct
       super_block_buf->magic_num = MAGIC_NUM; //write magic num
-      //TODO
-
-      
+      super_block_buf->dir_inode_count = 0; 
+      super_block_buf->free_block_count = 4062; //2^12-1-1-32
+      super_block_buf->free_inode_count = 1024;
       memset(super_block_buf->empty_map,0xffffffff,sizeof(super_block_buf->empty_map)); //fill empty map
+      super_block_buf->block_map[0] = 0xffffffff;
+      super_block_buf->block_map[1] = 0xC0000000; //34 data blocks are used for system
       
       write_data_block(0,disk_buf);  //reset super block
-      printf("reset finish!!\n");
+      printf("reset super block done\n");
     }
     else
     {
