@@ -64,17 +64,11 @@ int write_data_block(unsigned int datablock_num, char* buf){ //write a data bloc
 
 
 void reset_disk(){  //reset file system
-  FILE* tmp = fopen("disk","w");//reset all data
-        for(int i = 0; i < get_disk_size(); i++){
-                fputc(0,tmp);
-        }
-        fclose(tmp);
-
-
-       
-
+    close_disk();
+    open_disk();
+    create_disk();//reset all to zero
     char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
-    memset(disk_buf,0,sizeof(disk_buf));
+    //memset(disk_buf,0,sizeof(disk_buf));
     //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
     if(read_data_block(0,disk_buf)==0){ //start reset super block
       //printf("%x %x %x\n",disk_buf[0x200],disk_buf[0x201],disk_buf[0x202]);//test
@@ -83,7 +77,7 @@ void reset_disk(){  //reset file system
       //TODO
 
       
-      memset(super_block_buf->empty_map,0xffffffff,sizeof(super_block_buf->empty_map));
+      memset(super_block_buf->empty_map,0xffffffff,sizeof(super_block_buf->empty_map)); //fill empty map
       
       write_data_block(0,disk_buf);  //reset super block
       printf("reset finish!!\n");
@@ -99,7 +93,9 @@ void reset_disk(){  //reset file system
 
 void read_super(){  //read super block
     char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
+    
     if(read_data_block(0,disk_buf)==0){
+      
       sp_block *super_block_buf = (sp_block *)disk_buf;
       printf("succesfully read super block\n");
       if (super_block_buf->magic_num != MAGIC_NUM)
@@ -107,6 +103,7 @@ void read_super(){  //read super block
         //magic num is broken
         //you should reset the file system
         printf("magic num is broken:%x,resetting file system...\n",super_block_buf->magic_num);
+        //create_disk();
         reset_disk();
       }
       read_data_block(0,disk_buf);
@@ -125,6 +122,7 @@ void read_super(){  //read super block
 
 int main(int argc, char* argv[]){
     char buf[512]; //读入命令的缓冲区
+
     
     if(open_disk()==0) {
       printf("disk open\n"); //打开磁盘

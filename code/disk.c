@@ -9,10 +9,11 @@ inline int get_disk_size()
 
 static FILE* disk;
 
-static int create_disk()
+int create_disk()
 {
         FILE* tmp = fopen("disk","w");
         for(int i = 0; i < get_disk_size(); i++){
+                //printf("zero: %d\n",i);
                 fputc(0,tmp);
         }
         fclose(tmp);

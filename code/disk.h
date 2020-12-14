@@ -65,5 +65,6 @@ int disk_read_block(unsigned int block_num, char* buf);
  */
 int disk_write_block(unsigned int block_num, char* buf);
 
+int create_disk();
 
 #endif 
