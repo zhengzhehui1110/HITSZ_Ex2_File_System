@@ -4,8 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-char*
-gets(char *buf, int max)
+char* gets(char *buf, int max)
 {
   int i, cc;
   char c;
@@ -23,9 +22,7 @@ gets(char *buf, int max)
   return buf;
 }
 
-
-int
-getcmd(char *buf, int nbuf) //read a command line
+int getcmd(char *buf, int nbuf) //read a command line
 {
   printf("EXT2 FILE SYS$");
   fflush(stdout);
@@ -77,16 +74,39 @@ void reset_disk(){  //reset file system
       memset(super_block_buf->empty_map,0xffffffff,sizeof(super_block_buf->empty_map)); //fill empty map
       super_block_buf->block_map[0] = 0xffffffff;
       super_block_buf->block_map[1] = 0xC0000000; //34 data blocks are used for system
-      
       write_data_block(0,disk_buf);  //reset super block
       printf("reset super block done\n");
     }
     else
     {
-      printf("reset fail\n");
+      printf("reset super block fail\n");
       exit(0);
     }
-  
+    struct inode inode_arr[32]; //each data block include 32 inode
+    for(int i = 0; i < 32;i++){
+      inode_arr[i].link = 0;  //no dir_item link to inode at first
+      inode_arr[i].file_type = 0;
+      inode_arr[i].size = 3; //every inode include 3 data blocks
+    }
+    uint32_t data_block_num = 34;
+    for (int i = 2; i < 34; i++) //start reset inode array
+    {
+      for(int j = 0;j < 32;j++,data_block_num+=3){
+        inode_arr[j].block_point[0] = data_block_num;  //give 3 data blocks to every inode
+        inode_arr[j].block_point[1] = data_block_num+1;
+        inode_arr[j].block_point[2] = data_block_num+2;
+        inode_arr[j].block_point[3] = 0;
+        inode_arr[j].block_point[4] = 0;
+        inode_arr[j].block_point[5] = 0;
+      }
+      if(write_data_block(i,(char *)inode_arr)!= 0) //set inodes in data block i
+      {
+        printf("cannot set node array block %d\n",i);
+        exit(0);
+      }
+    }
+    printf("reset inode array done\n");
+
 }
 
 
@@ -102,8 +122,8 @@ void read_super(){  //read super block
         //magic num is broken
         //you should reset the file system
         printf("magic num is broken:%x,resetting file system...\n",super_block_buf->magic_num);
-        //create_disk();
         reset_disk();
+        printf("reset finish!\n");
       }
       read_data_block(0,disk_buf);
       super_block_buf = (sp_block *)disk_buf;

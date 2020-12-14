@@ -6,6 +6,9 @@
 #define DEVICE_BLOCK_SIZE 512
 #define MAGIC_NUM 0x11223344
 
+#define TYPE_FILE 0x2
+#define TYPE_DIR 0x1
+
 typedef struct super_block {
     int32_t magic_num;                  // 幻数
     int32_t free_block_count;           // 空闲数据块数
