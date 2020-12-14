@@ -9,6 +9,8 @@
 #define TYPE_FILE 0x2
 #define TYPE_DIR 0x1
 
+#define MAX_PATH_DEPTH 20
+
 typedef struct super_block {
     int32_t magic_num;                  // 幻数
     int32_t free_block_count;           // 空闲数据块数
@@ -86,5 +88,6 @@ int disk_read_block(unsigned int block_num, char* buf);
 int disk_write_block(unsigned int block_num, char* buf);
 
 int create_disk();
+
 
 #endif 

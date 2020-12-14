@@ -24,7 +24,7 @@ char* gets(char *buf, int max)
 
 int getcmd(char *buf, int nbuf) //read a command line
 {
-  printf("EXT2 FILE SYS$");
+  printf("EXT2 FILE SYS $");
   fflush(stdout);
   //putchar('$');
   memset(buf, 0, nbuf);
@@ -43,8 +43,6 @@ int read_data_block(unsigned int datablock_num, char* buf){ //read a data block
     
     flag += disk_read_block(datablock_num*2+1,disk_block_buf);//read the second disk block
     memcpy(buf+DEVICE_BLOCK_SIZE,disk_block_buf,DEVICE_BLOCK_SIZE);
-    //printf("read: %x %x %x\n",disk_block_buf[0],disk_block_buf[1],disk_block_buf[2]);//test
-    //printf("%x %x %x\n",buf[0x200],buf[0x201],buf[0x202]);//test
     return (flag==0)?0:-1; //if succeed return 0
 }
 
@@ -54,11 +52,9 @@ int write_data_block(unsigned int datablock_num, char* buf){ //write a data bloc
     memcpy(disk_block_buf,buf,DEVICE_BLOCK_SIZE);  //divide data block into 2 part
     flag += disk_write_block(datablock_num*2,disk_block_buf);//write the first disk block
     memcpy(disk_block_buf,buf+DEVICE_BLOCK_SIZE,DEVICE_BLOCK_SIZE);
-    //printf("write: %x %x %x\n",disk_block_buf[0],disk_block_buf[1],disk_block_buf[2]);//test
     flag += disk_write_block(datablock_num*2+1,disk_block_buf); //write the second disk block
     return (flag==0)?0:-1; //if succeed return 0
 }
-
 
 void reset_disk(){  //reset file system
     close_disk();
@@ -109,7 +105,6 @@ void reset_disk(){  //reset file system
 
 }
 
-
 void read_super(){  //read super block
     char disk_buf[DEVICE_BLOCK_SIZE*2]; //data_block buf
     
@@ -136,8 +131,63 @@ void read_super(){  //read super block
     }
 }
 
+void split_command(char *buf, char * word_list[512]){ //split command line into words
+  char *p = buf;
+  int i = 0;
+  word_list[0] = 0;
+  while(*p != '\n' && *p != '\r'){
+    if(*p == ' '){
+      *p = '\0';
+    }
+    p++;
+  }
+  *p = '\0';
+  char *q = buf;
+  while (q < p)
+  {
+    word_list[i] = q;
+    i++;
+    while(*q != '\0' && q < p){
+      q++;
+    }
+    while(*q == '\0' && q < p){
+      q++;
+    }
+  }
+  word_list[i] = 0;
+}
 
+int split_path(char *path, char *path_list[MAX_PATH_DEPTH]){ //split path into dirs(and file name)
+  char *p = path;
+  int i = 0;
+  while (*p != '\0')
+  {
+    if(*p == '/'){
+      *p = '\0';
+      path_list[i] = p+1;
+      i++;
+      if(i >= 20){
+        printf("path overflow!\n");
+        return -1;
+      }
+    }
+    p++;
+  }
+  path_list[i] = 0;
+  return 0;
+}
 
+// char * find_next_word(char *cur_word){
+//   char *next_word = cur_word;
+//   while (*next_word != '\0')
+//   {
+//     next_word++;
+//   }
+//   while(*next_word == '\0'){
+//     next_word++;
+//   }
+//   return next_word;
+// }
 
 int main(int argc, char* argv[]){
     char buf[512]; //读入命令的缓冲区
@@ -150,46 +200,37 @@ int main(int argc, char* argv[]){
         printf("cannot open file\n");
         return 0;
     }
-
-    
-
-
-
     //read super block
     read_super();
-    
-    
-
-    //shell
+    //shell begin
     while(getcmd(buf, sizeof(buf)) >= 0){
-        if(buf[0] == 'l'&&buf[1] == 's'){
+        char * command_words[512];
+        split_command(buf,command_words);
+        if(strcmp(buf,"ls")==0){
             //列出目录下的内容
-            printf("ls\n");
+            printf("this is ls\n");
+
         }
-        else if(buf[0] == 'm'&&buf[1] == 'k'&&
-            buf[2] == 'd'&&buf[3] == 'i'&&
-            buf[4] == 'r'){
+        else if(strcmp(buf,"mkdir")==0){
                 //在该目录下创建一个新的子目录
         }
-        else if(buf[0] == 't'&&buf[1] == 'o'&&
-            buf[2] == 'u'&&buf[3] == 'c'&&
-            buf[4] == 'h'){
+        else if(strcmp(buf,"touch")==0){
                 //在该目录下创建一个新的文件
         }
-        else if(buf[0] == 'c'&&buf[1] == 'p'){
+        else if(strcmp(buf,"cp")==0){
             //复制文件
         }
-        else if(buf[0] == 's'&&buf[1] == 'h'&&
-            buf[2] == 'u'&&buf[3] == 't'&&
-            buf[4] == 'd'&&buf[5] == 'o'&&
-            buf[6] == 'w'&&buf[7] == 'n'){
+        else if(strcmp(buf,"shutdown")==0){
                 //关闭文件系统
+            printf("this is shutdown\n");
         }
         else
         {
             printf("unknown command\n");
+            
+
         }
-        
+        memset(buf,'\0',sizeof(buf));  //clear command buf
     
     }
     return 0;
