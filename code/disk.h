@@ -4,7 +4,7 @@
 
 // The size of one single disk block in bytes
 #define DEVICE_BLOCK_SIZE 512
-#define MAGIC_NUM 0x11223344
+#define MAGIC_NUM 0x11223355
 
 #define TYPE_FILE 0x2
 #define TYPE_DIR 0x1
@@ -21,6 +21,7 @@ typedef struct super_block {
     uint32_t empty_map[92];             // unused inode map, default:1
 } sp_block;
 
+struct super_block my_super_block;
 
 struct inode {
     uint32_t size;              // 文件大小
