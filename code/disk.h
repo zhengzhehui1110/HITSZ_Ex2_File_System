@@ -4,7 +4,7 @@
 
 // The size of one single disk block in bytes
 #define DEVICE_BLOCK_SIZE 512
-#define MAGIC_NUM 0x11223355
+#define MAGIC_NUM 0x11223344
 
 #define TYPE_FILE 0x2
 #define TYPE_DIR 0x1

@@ -239,6 +239,7 @@ uint32_t find_empty_inode(){ //find an empty inode
   //inode map in super block:32bit * 32
   if(my_super_block.free_inode_count==0) return 0; //no empty inode
   for(int i = 0;i < 32;i++){
+    if(my_super_block.inode_map[i] == 0xffffffff) continue;
     uint32_t checknum = 0x1;
     for(int j = 0;j < 32;j++){
       if((my_super_block.inode_map[i] & (checknum << j))==0){
@@ -252,14 +253,14 @@ uint32_t find_empty_inode(){ //find an empty inode
   return 0;
 }
 
-uint32_t insert_new_diritem(char *name, uint32_t block_num, int offset){ //insert a new dir_item in data block NO.block_num
+uint32_t insert_new_diritem(char *name, uint8_t type, uint32_t block_num, int offset){ //insert a new dir_item in data block NO.block_num
   char datablock_buf[DEVICE_BLOCK_SIZE*2];
   read_data_block(block_num,datablock_buf);
   struct dir_item dir_buf[8];
   memcpy(dir_buf,datablock_buf,sizeof(datablock_buf));
   dir_buf[offset].valid = 1;
   strcpy(dir_buf[offset].name,name);
-  dir_buf[offset].type = TYPE_DIR;
+  dir_buf[offset].type = type;
   //then find an empty inode for it
   if((dir_buf[offset].inode_id = find_empty_inode()) == 0){
     printf("no empty inode for new dir\n");
@@ -271,15 +272,15 @@ uint32_t insert_new_diritem(char *name, uint32_t block_num, int offset){ //inser
   return dir_buf[offset].inode_id; //return new inode id
 }
 
-uint32_t build_new_dir(char *name,struct inode cur_inode){ //build a new dir under current dir
+uint32_t build_new_dir_or_file(char *name,uint8_t type,struct inode cur_inode){ //build a new dir/file under current dir
   //find an unused dir_item in current inode
   //find an unused inode in inode array
   //link new dir_item to new inode
   for(int i = 0;i < cur_inode.size;i++){
     int dir_offset = find_empty_diritem_from_db(cur_inode.block_point[i]);
     if(dir_offset != -1){
-      uint32_t new_inode_id = insert_new_diritem(name,cur_inode.block_point[i],dir_offset);
-      if(new_inode_id > 0) printf("new dir:%s in inode %d\n",name,new_inode_id); //test
+      uint32_t new_inode_id = insert_new_diritem(name,type,cur_inode.block_point[i],dir_offset);
+      if(new_inode_id > 0) printf("new: %s inode: %d\n",name,new_inode_id); //test
       return new_inode_id;
     }
   }
@@ -288,15 +289,44 @@ uint32_t build_new_dir(char *name,struct inode cur_inode){ //build a new dir und
 }
 
 void touch(char * path_list[MAX_PATH_DEPTH]){ //touch
-  char *filename;
-  for(int i = 1;i < MAX_PATH_DEPTH;i++){ // find the last word in path_list which is filename
-    if(path_list[i]==NULL){
-      filename = path_list[i-1];
-      break;
+  uint32_t cur_inode_id = 0; //root dir's inode
+    int i = 0;
+    
+    for(i = 0;path_list[i] != NULL;i++){
+      
+        int dir_item_isfind = 0; //is dir_item exist in cur_inode?
+        struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
+        struct dir_item cur_dir_item;
+        for(int j = 0;j < cur_inode.size;j++){  //is this file/dir exist?
+          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          if(path_list[i+1] == NULL) //path_list[i] is a file name
+            cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_FILE);
+          else   //path_list[i] is a dir name
+            cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_DIR);
+          if(cur_dir_item.valid==1){
+            dir_item_isfind = 1;
+            break;
+          }
+        }
+        if(dir_item_isfind == 1){
+          //the dir/file is exist
+          printf("%s is already exist\n",path_list[i]); //test
+          cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
+        }
+        else{
+          printf("%s is not exist,build a new one...\n",path_list[i]); //test
+          if(path_list[i+1] == NULL) //path_list[i] is a file name
+            cur_inode_id = build_new_dir_or_file(path_list[i],TYPE_FILE,cur_inode);
+          else //path_list[i] is a dir name
+            cur_inode_id = build_new_dir_or_file(path_list[i],TYPE_DIR,cur_inode);
+          if(cur_inode_id==0){
+            printf("build failed\n");
+            return;
+          }
+        }
+      
+      
     }
-  }
-  printf("filename:%s\n",filename); //test
-  //TODO
   
 
 }
@@ -325,14 +355,12 @@ void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
         }
         else{
           printf("%s is not exist,build a new one...\n",path_list[i]); //test
-          cur_inode_id = build_new_dir(path_list[i],cur_inode);
+          cur_inode_id = build_new_dir_or_file(path_list[i],TYPE_DIR,cur_inode);
           if(cur_inode_id==0){
             printf("build failed\n");
             return;
           }
         }
-      
-      
     }
 }
 
@@ -349,7 +377,8 @@ void print_dir_item(uint32_t inode_id){ //print all dir item in inode
     }
     memcpy(dir_buf,db_buf,sizeof(db_buf));
     for(int j = 0;j < 8;j++){ //print every dir item in every block
-      if(dir_buf[j].valid == 1) printf("%s\t%d\n",dir_buf[j].name,dir_buf[j].type);
+      if(dir_buf[j].valid == 1) 
+        printf("%s\t%s\n",dir_buf[j].name,(dir_buf[j].type==TYPE_DIR)?"dir":(dir_buf[j].type==TYPE_FILE)?"file":"");
     }
     
   }
@@ -428,14 +457,20 @@ int main(int argc, char* argv[]){
         else if(strcmp(buf,"mkdir")==0){
             //在该目录下创建一个新的子目录
             char * path_list[MAX_PATH_DEPTH];
-            if(split_path(command_words[1],path_list)==0){
+            if(command_words[1] == NULL){ //if path is null
+              printf("error:please enter a path\n");
+            }
+            else if(split_path(command_words[1],path_list)==0){
               mkdir(path_list);
             }
         }
         else if(strcmp(buf,"touch")==0){
                 //在该目录下创建一个新的文件
             char * path_list[MAX_PATH_DEPTH];
-            if(split_path(command_words[1],path_list)==0){
+            if(command_words[1] == NULL){ //if path is null
+              printf("error:please enter a path\n");
+            }
+            else if(split_path(command_words[1],path_list)==0){
                 touch(path_list);
             }
         }
