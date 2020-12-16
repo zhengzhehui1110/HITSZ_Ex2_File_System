@@ -69,7 +69,6 @@ void reset_disk(){  //reset file system
       super_block_buf->block_map[0] = 0xffffffff;
       super_block_buf->block_map[1] = 0x0000001f; //34 data blocks are used for system and 3 are used for root dir
       write_data_block(0,disk_buf);  //reset super block
-      printf("reset super block done\n");
     }
     else
     {
@@ -78,8 +77,6 @@ void reset_disk(){  //reset file system
     }
     struct inode inode_arr[32]; //each data block include 32 inode
     for(int i = 0; i < 32;i++){
-      //inode_arr[i].link = 0;  //no dir_item link to inode at first
-      //inode_arr[i].file_type = 0;
       inode_arr[i].size = 3; //every inode include 3 data blocks
     }
     uint32_t data_block_num = 34;
@@ -107,8 +104,6 @@ void reset_disk(){  //reset file system
         exit(0);
       }
     }
-    printf("reset inode array done\n");
-
 }
 
 void read_super(){  //read super block
@@ -259,7 +254,7 @@ uint32_t insert_new_diritem(char *name, uint8_t type, uint32_t block_num, int of
   }
   memcpy(datablock_buf,dir_buf,sizeof(datablock_buf));
   write_data_block(block_num,datablock_buf); //update data block with new dir item
-  printf("insert new dir %s in block %d\n",name,block_num); //test
+  //printf("insert new dir %s in block %d\n",name,block_num); //test
   return dir_buf[offset].inode_id; //return new inode id
 }
 
@@ -271,7 +266,7 @@ uint32_t build_new_dir_or_file(char *name,uint8_t type,struct inode cur_inode){ 
     int dir_offset = find_empty_diritem_from_db(cur_inode.block_point[i]);
     if(dir_offset != -1){
       uint32_t new_inode_id = insert_new_diritem(name,type,cur_inode.block_point[i],dir_offset);
-      if(new_inode_id > 0) printf("new: %s inode: %d\n",name,new_inode_id); //test
+      //if(new_inode_id > 0) printf("new: %s inode: %d\n",name,new_inode_id); //test
       return new_inode_id;
     }
   }
@@ -287,7 +282,7 @@ uint32_t touch(char * path_list[MAX_PATH_DEPTH]){ //touch
         struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
         struct dir_item cur_dir_item;
         for(int j = 0;j < cur_inode.size;j++){  //is this file/dir exist?
-          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          //printf("search in block %d...\n",cur_inode.block_point[j]); //test
           if(path_list[i+1] == NULL) //path_list[i] is a file name
             cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_FILE);
           else   //path_list[i] is a dir name
@@ -314,7 +309,6 @@ uint32_t touch(char * path_list[MAX_PATH_DEPTH]){ //touch
         }
     }
   return cur_inode_id; //return new file's inode id
-
 }
 
 void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
@@ -325,7 +319,7 @@ void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
         struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
         struct dir_item cur_dir_item;
         for(int j = 0;j < cur_inode.size;j++){
-          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          //printf("search in block %d...\n",cur_inode.block_point[j]); //test
           cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_DIR);
           if(cur_dir_item.valid==1){
             dir_item_isfind = 1;
@@ -334,11 +328,11 @@ void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
         }
         if(dir_item_isfind == 1){
           //the dir is exist
-          printf("%s is exist\n",path_list[i]); //test
+          printf("%s is already exist\n",path_list[i]); //test
           cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
         }
         else{
-          printf("%s is not exist,build a new one...\n",path_list[i]); //test
+          //printf("%s is not exist,build a new one...\n",path_list[i]); //test
           cur_inode_id = build_new_dir_or_file(path_list[i],TYPE_DIR,cur_inode);
           if(cur_inode_id==0){
             printf("build failed\n");
@@ -376,7 +370,7 @@ void ls(char * path_list[MAX_PATH_DEPTH]){  //ls
         struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
         struct dir_item cur_dir_item;
         for(int j = 0;j < cur_inode.size;j++){
-          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          //printf("search in block %d...\n",cur_inode.block_point[j]); //test
           cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_DIR);
           if(cur_dir_item.valid==1){
             dir_item_isfind = 1;
@@ -386,7 +380,7 @@ void ls(char * path_list[MAX_PATH_DEPTH]){  //ls
         if(dir_item_isfind == 1){
           //the dir is exist
           cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
-          printf("%s is exist,inode = %d\n",path_list[i],cur_inode_id); //test
+          //printf("%s is already exist,inode = %d\n",path_list[i],cur_inode_id); //test
         }
         else{
           printf("%s is not exist\n",path_list[i]);
@@ -414,7 +408,7 @@ void cp(char * path_list_src[MAX_PATH_DEPTH], char * path_list_des[MAX_PATH_DEPT
         struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
         struct dir_item cur_dir_item;
         for(int j = 0;j < cur_inode.size;j++){
-          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          //printf("search in block %d...\n",cur_inode.block_point[j]); //test
           if(path_list_src[i+1]==NULL) //path_list_src[i] is a file name
             cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list_src[i],TYPE_FILE);
           else //path_list_src[i] is a dir name
@@ -427,7 +421,7 @@ void cp(char * path_list_src[MAX_PATH_DEPTH], char * path_list_des[MAX_PATH_DEPT
         if(dir_item_isfind == 1){
           //the dir is exist
           cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
-          printf("%s is exist,inode = %d\n",path_list_src[i],cur_inode_id); //test
+          //printf("%s is already exist,inode = %d\n",path_list_src[i],cur_inode_id); //test
         }
         else{
           printf("%s is not exist\n",path_list_src[i]);
@@ -451,16 +445,14 @@ void update_super_block(){  //save super block before leaving
 
 int main(int argc, char* argv[]){
     char buf[512]; //读入命令的缓冲区
-    if(open_disk()==0) {
+    if(open_disk()==0) 
       printf("disk open\n"); //打开磁盘
-    }
     else {
         printf("cannot open file\n");
         return 0;
     }
     read_super(); //read super block
-    //shell begin
-    while(getcmd(buf, sizeof(buf)) >= 0){
+    while(getcmd(buf, sizeof(buf)) >= 0){ //shell begin
         char * command_words[512];
         split_command(buf,command_words);
         if(strcmp(buf,"ls")==0){ //$ls path //list all dir and file in path
@@ -470,10 +462,8 @@ int main(int argc, char* argv[]){
               path_list[0] = NULL;
               ls(path_list);
             }
-            else if(split_path(command_words[1],path_list)==0){
-              printf("2\n"); //test
+            else if(split_path(command_words[1],path_list)==0)
               ls(path_list);
-            }
         }
         else if(strcmp(buf,"mkdir")==0){ //$mkdir path //make a new dir
             char * path_list[MAX_PATH_DEPTH];
