@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <math.h> 
 
-char* gets(char *buf, int max)
+char* gets(char *buf, int max) //read command char from stdin
 {
   int i, cc;
   char c;
@@ -319,7 +319,7 @@ void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
           }
         }
         if(dir_item_isfind == 1){
-          //the dir is exit
+          //the dir is exist
           printf("%s is exist\n",path_list[i]); //test
           cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
         }
@@ -336,8 +336,55 @@ void mkdir(char * path_list[MAX_PATH_DEPTH]){  //mkdir
     }
 }
 
+void print_dir_item(uint32_t inode_id){ //print all dir item in inode
+  printf("*****************\n");
+  printf("name\ttype\n");
+  struct inode target_inode = find_inode_from_disk(inode_id);
+  struct dir_item dir_buf[8];
+  char db_buf[DEVICE_BLOCK_SIZE*2];
+  for(int i = 0;i < target_inode.size;i++){  //read all blocks in inode
+    if(read_data_block(target_inode.block_point[i],db_buf)!=0){
+      printf("cannot read block %d\n",target_inode.block_point[i]);
+      return;
+    }
+    memcpy(dir_buf,db_buf,sizeof(db_buf));
+    for(int j = 0;j < 8;j++){ //print every dir item in every block
+      if(dir_buf[j].valid == 1) printf("%s\t%d\n",dir_buf[j].name,dir_buf[j].type);
+    }
+    
+  }
+  printf("*****************\n");
+}
 
-
+void ls(char * path_list[MAX_PATH_DEPTH]){  //ls
+    uint32_t cur_inode_id = 0; //root dir's inode
+    int i = 0;
+    
+    for(i = 0;path_list[i] != NULL;i++){
+      
+        int dir_item_isfind = 0; //is dir_item exist in cur_inode?
+        struct inode cur_inode = find_inode_from_disk(cur_inode_id); //find current inode from disk
+        struct dir_item cur_dir_item;
+        for(int j = 0;j < cur_inode.size;j++){
+          printf("search in block %d...\n",cur_inode.block_point[j]); //test
+          cur_dir_item = find_diritem_from_db(cur_inode.block_point[j],path_list[i],TYPE_DIR);
+          if(cur_dir_item.valid==1){
+            dir_item_isfind = 1;
+            break;
+          }
+        }
+        if(dir_item_isfind == 1){
+          //the dir is exist
+          cur_inode_id = cur_dir_item.inode_id; //update current inode id to next inode id
+          printf("%s is exist,inode = %d\n",path_list[i],cur_inode_id); //test
+        }
+        else{
+          printf("%s is not exist\n",path_list[i]);
+          return;
+        }
+      }
+      print_dir_item(cur_inode_id);
+}
 
 
 void update_super_block(){  //save super block before leaving
@@ -365,13 +412,21 @@ int main(int argc, char* argv[]){
     while(getcmd(buf, sizeof(buf)) >= 0){
         char * command_words[512];
         split_command(buf,command_words);
+        //if(command_words[1]==NULL) command_words[1] = "/nothing"; //test
         if(strcmp(buf,"ls")==0){
             //列出目录下的内容
-            printf("this is ls\n");
-
+            char * path_list[MAX_PATH_DEPTH];
+            if(command_words[1] == NULL){ //if path is null,list root dir
+              path_list[0] = NULL;
+              ls(path_list);
+            }
+            else if(split_path(command_words[1],path_list)==0){
+              printf("2\n"); //test
+              ls(path_list);
+            }
         }
         else if(strcmp(buf,"mkdir")==0){
-                //在该目录下创建一个新的子目录
+            //在该目录下创建一个新的子目录
             char * path_list[MAX_PATH_DEPTH];
             if(split_path(command_words[1],path_list)==0){
               mkdir(path_list);
@@ -389,8 +444,9 @@ int main(int argc, char* argv[]){
         }
         else if(strcmp(buf,"shutdown")==0){
                 //关闭文件系统
-            printf("this is shutdown\n");  //test
+            //printf("this is shutdown\n");  //test
             update_super_block();
+            printf("Bye Bye\n");
             close_disk();
             exit(0);
         }
