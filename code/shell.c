@@ -390,7 +390,7 @@ void ls(char * path_list[MAX_PATH_DEPTH]){  //ls
       print_dir_item(cur_inode_id);
 }
 
-void copy_file(uint32_t inode_src_id, uint32_t inode_des_id){
+void copy_file(uint32_t inode_src_id, uint32_t inode_des_id){ //copy inode src to des
   struct inode inode_src = find_inode_from_disk(inode_src_id);
   struct inode inode_des = find_inode_from_disk(inode_des_id);
   char buf[DEVICE_BLOCK_SIZE*2];
